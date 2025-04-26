@@ -1,12 +1,30 @@
-# React + Vite
+# jackhack team i
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 開発の流れ
 
-Currently, two official plugins are available:
+## 開発を始める方法
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+端末(PowerShell とか，VSCode の下に出てくるやつとか，かっこいい感じの画面とか呼ばれるやつ)を用意する
 
-## Expanding the ESLint configuration
+その端末で???/jackHack2025_I ディレクトリまで cd コマンドを用いて移動する．
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+npm run dev
+```
+
+http://localhost:5173/
+にアクセスすると見れる!
+
+## 開発中の動き
+
+ソースコードを書き換える．
+ソースコードを Ctrl-S で保存する．
+ソースコードが http://localhost:5173/に反映される．
+github に作業を適応する方法
+作業が一区切りついたら実行してほしい
+
+```
+git add -A
+git commit -m "<英単語> (エンターキー) 詳細説明"
+git push origin HEAD
+```
