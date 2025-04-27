@@ -7,6 +7,7 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/PuzzlePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function PuzzlePage() {
+    // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
   const { updateLovepoint } = useGame();

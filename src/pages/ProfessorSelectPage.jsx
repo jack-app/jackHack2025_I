@@ -7,6 +7,7 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/ProfessorSelectPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function ProfessorSelectPage() {
+    // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
 

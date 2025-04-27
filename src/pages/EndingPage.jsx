@@ -8,6 +8,7 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/EndingPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function EndingPage() {
+    // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
 

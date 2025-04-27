@@ -7,6 +7,7 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/DifficultySelectPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function DifficultySelectPage() {
+  // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
 

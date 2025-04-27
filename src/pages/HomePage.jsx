@@ -8,11 +8,12 @@ import testImage from "../assets/professor/test.png"; // 画像をインポー�
 import "../styles/pages/HomePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function HomePage() {
+    // javaScriptが書ける↓
   const navigate = useNavigate(); // 遷移用の関数
   const game = useGame(); // GameContextから現在のゲーム状態を取得
 
   return (
-    <divf className="home-page">
+    <div className="home-page">
       <h1>Home Page</h1>
 
       {/* 現在のゲーム状態を画面に表示（デバッグ用） */}
@@ -22,7 +23,7 @@ function HomePage() {
 
       {/* 「ゲームスタート」ボタンを押すと /difficulty に移動 */}
       <button onClick={() => navigate("/difficulty")}>ゲームスタート</button>
-    </divf>
+    </div>
   );
 }
 
