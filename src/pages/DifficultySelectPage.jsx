@@ -4,13 +4,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
+import "../styles/pages/DifficultySelectPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function DifficultySelectPage() {
   const navigate = useNavigate();
   const game = useGame();
 
   return (
-    <div>
+    <div className="difficulty-page">
       <h1>Difficulty Select Page</h1>
 
       {/* 現在のゲーム状態を表示 */}

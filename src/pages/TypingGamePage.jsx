@@ -5,13 +5,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
+import "../styles/pages/TypingGamePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function TypingGamePage() {
   const navigate = useNavigate();
   const game = useGame();
 
   return (
-    <div>
+    <div className="typing-game-page">
       <h1>Typing Game Page</h1>
 
       {/* 現在のゲーム状態を表示 */}

@@ -4,6 +4,7 @@
 import React, { use } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
+import "../styles/pages/PuzzlePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function PuzzlePage() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function PuzzlePage() {
 
 
   return (
-    <div>
+    <div className="puzzle-page">
       <h1>Puzzle Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
