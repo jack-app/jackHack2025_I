@@ -181,12 +181,13 @@ src/
 
    (2) 取り出したデータや関数を使う
    例えば：
+   ```
    難易度をセットする → game.setDifficulty("easy")
    教授を selectedProfessors(list)に追加する → game.addProfessor(1) (ID で追加する)
    好感度を更新する → game.updateLovepoint(1, 10) (教授の ID, 増減する数)のようにする
    攻略する教授を一人選ぶ ➔game.setChosenProfessorId(1)
    タイピングゲームの次のラウンドに進む関数
-
+    ```
    みたいに、どのページからでも自由に操作できる！
    ➔ 新入生のみなさんには、タイピングゲームや、パズルゲームを作ってもらうけれど、ゲーム全体で必要となる要素をこれを使って操作できるようになります！
 
