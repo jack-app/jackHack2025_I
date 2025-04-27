@@ -1,0 +1,36 @@
+/* すべての余白・枠線をリセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* リストマーク(●とか数字)を消す */
+ul, ol {
+  list-style: none;
+}
+
+/* デフォルトリンク装飾を消す */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 画像が親からはみ出さないように */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* テキスト入力とボタンの基本スタイルを統一 */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* ボタンにブラウザ依存の影を消す */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
