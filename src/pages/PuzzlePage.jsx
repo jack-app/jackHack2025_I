@@ -10,14 +10,13 @@ function PuzzlePage() {
     // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
-  const { updateLovepoint } = useGame();
 
 
   const testProfessorId = 1; // テスト用に「中村先生（id: 1）」を指定
 
   // 好感度アップさせるボタンのクリック処理
   const handleIncreaseLovepoint = () => {
-    updateLovepoint(testProfessorId, 10); // 好感度+10
+    game.updateLovepoint(testProfessorId, 10); // 好感度+10
   };
 
 
