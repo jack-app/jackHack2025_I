@@ -9,6 +9,12 @@
 その端末で???/jackHack2025_I ディレクトリまで cd コマンドを用いて移動する．
 
 ```
+code .
+```
+
+と打って、vsCode などのエディターを起動
+
+```
 npm run dev
 ```
 
@@ -25,6 +31,7 @@ github に作業を適応する方法
 
 ```
 git add -A
+git status
 git commit -m "<英単語> (エンターキー) 詳細説明"
 git push origin HEAD
 ```
