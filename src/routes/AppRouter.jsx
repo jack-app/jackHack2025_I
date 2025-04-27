@@ -9,7 +9,7 @@ import EndingPage from "../pages/EndingPage.jsx";
 
 function AppRouter() {
   return (
-    <BrowserRouter>
+    <BrowserRouter  basename={import.meta.env.DEV ? "/" : "/jackHack2025_I/"}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/difficulty" element={<DifficultySelectPage />} />

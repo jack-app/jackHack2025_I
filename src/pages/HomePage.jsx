@@ -5,13 +5,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom"; // 画面遷移するために使う
 import { useGame } from "../contexts/GameContext"; // ゲームの状態（難易度など）を取得するために使う
 import testImage from "../assets/professor/test.png"; // 画像をインポート
+import "../styles/pages/HomePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function HomePage() {
+    // javaScriptが書ける↓
   const navigate = useNavigate(); // 遷移用の関数
   const game = useGame(); // GameContextから現在のゲーム状態を取得
 
   return (
-    <div>
+    <div className="home-page">
       <h1>Home Page</h1>
 
       {/* 現在のゲーム状態を画面に表示（デバッグ用） */}

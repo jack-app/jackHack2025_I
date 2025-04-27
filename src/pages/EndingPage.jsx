@@ -5,13 +5,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
+import "../styles/pages/EndingPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 
 function EndingPage() {
+    // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
 
   return (
-    <div>
+    <div className="ending-page">
       <h1>Ending Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
