@@ -50,6 +50,14 @@ export const GameProvider = ({ children }) => {
     return initialMap;
   }
 
+  // 全てのデータを初期化する関数
+  const resetGame = () => {
+    setDifficulty(null);
+    setSelectedProfessors([]);
+    setChosenProfessorId(null);
+    setProfessorLovepointMap(initializeProfessorLovepoints());
+    setTypingRound(1);
+  };
   // コンテキストプロバイダーで状態と関数を子コンポーネントに提供
   return (
     <GameContext.Provider

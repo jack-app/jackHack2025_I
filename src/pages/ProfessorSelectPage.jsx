@@ -11,12 +11,21 @@ function ProfessorSelectPage() {
   const navigate = useNavigate();
   const game = useGame();
 
+  // IDを指定して教授を選択する関数
+  const selectProfessor = (professorId) => {
+    game.setChosenProfessorId(professorId);
+    console.log(`Selected professor: ${professorId}`);
+  };
+
+  const professors = game.professors || []; // ゲーム状態から教授リストを取得
+
   return (
     <div className="professor-select-page">
       <h1>Professor Select Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
       <pre>{JSON.stringify(game, null, 2)}</pre>
+      <button onClick={selectProfessor(1)}></button>
 
       {/* 次へ進むボタン（タイピングゲームへ） */}
       <button onClick={() => navigate("/typing")}>タイピングへ</button>
