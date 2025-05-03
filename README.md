@@ -118,6 +118,8 @@ src/
 │   ├── PuzzlePage.jsx
 │   ├── TypingGamePage.jsx
 │   ├── ProfessorSelectPage.jsx
+│   ├── ProfessorExplainPage.jsx
+│   ├── MidStoryPage.jsx
 │   ├── DifficultySelectPage.jsx
 │   └── EndingPage.jsx
 │
@@ -134,7 +136,12 @@ src/
 │   └── pages/       # ページ単位のスタイル
 │       ├── HomePage.css
 │       ├── PuzzlePage.css
-│       └── TypingGamePage.css
+│       ├── TypingGamePage.css
+│       ├── ProfessorSelectPage.css
+│       ├── ProfessorExplainPage.css
+│       ├── MidStoryPage.css
+│       ├── DifficultySelectPage.css
+│       └── EndingPage.css
 ├── App.jsx         # アプリの全体の構成を書く場所（Providerで囲うなど）
 ├── main.jsx        # プログラムの起動地点（Reactアプリのエントリーポイント）
 
@@ -147,7 +154,7 @@ src/
    「どのページでも共通して使いたいデータをまとめて管理するための仕組み」
    です！
 2. なぜ必要なの？
-   アプリが大きくなると
+   ▶️ アプリが大きくなると
 
    - 難易度（easy/normal/hard）
    - 選んだ教授リスト
@@ -159,7 +166,7 @@ src/
      だから 👉 GameContext にまとめておくと、どこからでも簡単に使える！という仕組みになっています！
 
 3. どうやって使ってるの？
-   基本の使い空は 2 つ
+   ▶️ 基本の使い空は 2 つ
    (1) Context からデータ・関数を取り出す
    たとえば、HomePage.jsx では 👇
 
@@ -181,15 +188,23 @@ src/
 
    (2) 取り出したデータや関数を使う
    例えば：
+
    ```
    難易度をセットする → game.setDifficulty("easy")
    教授を selectedProfessors(list)に追加する → game.addProfessor(1) (ID で追加する)
    好感度を更新する → game.updateLovepoint(1, 10) (教授の ID, 増減する数)のようにする
    攻略する教授を一人選ぶ ➔game.setChosenProfessorId(1)
    タイピングゲームの次のラウンドに進む関数
-    ```
+   ```
+
    みたいに、どのページからでも自由に操作できる！
    ➔ 新入生のみなさんには、タイピングゲームや、パズルゲームを作ってもらうけれど、ゲーム全体で必要となる要素をこれを使って操作できるようになります！
+
+4. 保存について
+   ▶️ 現在の GameContext は、React の状態 (useState) と sessionStorage を連携させており以下の仕組みになってます！：
+   - ユーザーがページをリロードしても状態が保持される
+   - 状態変更時に自動で保存される
+   - tab を消したり、resetGame をすると sessionStorage も消去される
 
 ### how to deploy
 

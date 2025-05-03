@@ -1,15 +1,12 @@
-// TypingGamePage（タイピングゲーム画面）
-// 教授とのタイピング対決を行う
-// （実際にはここでタイピング入力エリアを作る予定）
+// MidStoryPage（間のストーリー画面）
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
-import "../styles/pages/TypingGamePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
+import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
-import difficulty from "../data/difficulty.js";
 
-function TypingGamePage() {
+function MidStoryPage() {
     // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
@@ -18,26 +15,25 @@ function TypingGamePage() {
    const professor = professors.find((p) => p.id === game.chosenProfessorId);
 
   return (
-    <div className="typing-game-page">
-      <h1>Typing Game Page</h1>
+    <div className="mid-story-page">
+      <h1>MidStoryPage Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
       <pre>{JSON.stringify(game, null, 2)}</pre>
-
       {/* 選ばれた教授情報 */}
       {professor && (
         <div className="professor-info">
-          <h2>{professor.name}への謝罪</h2>
+          <h2>{professor.name}とのストーリー</h2>
           <p>{professor.explanation}</p>
         </div>
       )}
 
       {/* 難易度情報 */}
 
-      {/* 次へ進むボタン（エンディング画面へ） */}
-      <button onClick={() => navigate("/ending")}>エンディングへ</button>
+      {/* 次へ進むボタン（タイピングゲームへ） */}
+      <button onClick={() => navigate("/typing")}>タイピングへ</button>
     </div>
   );
 }
 
-export default TypingGamePage;
+export default MidStoryPage;

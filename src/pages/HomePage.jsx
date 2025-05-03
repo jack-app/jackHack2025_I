@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"; // 画面遷移するために�
 import { useGame } from "../contexts/GameContext"; // ゲームの状態（難易度など）を取得するために使う
 import testImage from "../assets/professor/test.png"; // 画像をインポート
 import "../styles/pages/HomePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
+import professors from "../data/professor.js";
 
 function HomePage() {
     // javaScriptが書ける↓
