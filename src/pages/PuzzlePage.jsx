@@ -5,6 +5,7 @@ import React, { use } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/PuzzlePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
+import professors from "../data/professor.js";
 
 function PuzzlePage() {
     // javaScriptが書ける↓
@@ -19,6 +20,8 @@ function PuzzlePage() {
     game.updateLovepoint(testProfessorId, 10); // 好感度+10
   };
 
+   // 教授データから名前のみを取得
+   const professorNames = professors.map((professor) => professor.name);
 
   return (
     <div className="puzzle-page">
@@ -30,8 +33,11 @@ function PuzzlePage() {
       {/* 好感度アップボタン */}
       <button onClick={handleIncreaseLovepoint}>中村先生の好感度を+10する</button>
       
+      {/* 教授の名前一覧 */}
+      <div>{professorNames}</div>
+
       {/* 次へ進むボタン（教授選択画面へ） */}
-      <button onClick={() => navigate("/professor-select")}>教授選択へ</button>
+      <button onClick={() => navigate("/professor-explain")}>教授説明へ</button>
     </div>
   );
 }
