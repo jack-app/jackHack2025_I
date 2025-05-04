@@ -7,6 +7,7 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/DifficultySelectPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 // import professors from "../data/professor.js";
 import GameControlButton from "../components/common/GameControllButton/GameControlButton";
+import backgroundimage from "../assets/background/difficulty.svg";
 
 function DifficultySelectPage() {
   // javaScriptが書ける↓
@@ -23,13 +24,21 @@ function DifficultySelectPage() {
   // const professorNames = professors.map((professor) => professor.name);
   
   return (
-    <div className="difficulty-page">
+    <div
+      className="difficulty-page"
+      style={{
+        backgroundImage: `url(${backgroundimage})`,
+        height: "100vh", 
+        backgroundSize: "cover", 
+      }}
+    >
       <h1>Difficulty Select Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
       <pre>{JSON.stringify(game, null, 2)}</pre>
 
       {/* 難易度選択ボタン */}
+      {/* NOTE:状態表示に押し出されて表示がずれるが、とればうまくいくのでOK */}
       <GameControlButton label="EASY" onClick={() => handleDifficultySelect("easy")} />
       <GameControlButton label="NORMAL" onClick={() => handleDifficultySelect("normal")} />
       <GameControlButton label="HARD" onClick={() => handleDifficultySelect("hard")} />
