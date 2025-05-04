@@ -15,17 +15,14 @@ const TextArea = ({ texts, nextRoute }) => {
     };
 
     return (
-        <div className="text-area-container">
-            <div
-                onClick={handleClick}
-                style={{ cursor: 'pointer', padding: '20px', fontSize: '18px' }}
-                className="text-area"
-            >
+        <div className="text-area-container" onClick={handleClick}
+        style={{ cursor: 'pointer', padding: '20px', fontSize: '18px' }}>
+            <div className="text-area">
                 {texts[currentIndex]}
-            </div>
-            {currentIndex === texts.length - 1 && (
+                {currentIndex === texts.length - 1 && (
                 <div className="start-game-text">クリックでゲーム開始</div>
             )}
+            </div>
         </div>
     );
 };
