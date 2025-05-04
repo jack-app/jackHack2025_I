@@ -1,3 +1,42 @@
+.professor-select-page{
+  background-color: #FEE6C6;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .professor-select-page h1{
-  color: #eaff00;
+  color: #664B4F;
+}
+.professor-card{
+  border-radius: 30px;
+  margin: 10px;
+  background-color: #DC9F95;
+  border: 5px solid #664B4F;
+  color: #FFF6EE;
+}
+.professor-card-contents{
+  display: flex;
+  padding: 10px 5px 10px;
+  justify-content: space-between;
+}
+#professor-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-grow: 1;
+}
+.professor-portrait{
+  border-radius: 20px;
+  border: 5px solid #664B4F;
+  background-color: #FFF6EE;
+}
+.professor-select-page button{
+  /*display: inline-block;*/
+  border-radius: 8px;
+  background-color: #664B4F;
+  color: #FFF6EE;
+  padding: 7px;
+}
+.professor-select-page #footer{
+  padding: 7px;
+  direction: rtl;
 }
