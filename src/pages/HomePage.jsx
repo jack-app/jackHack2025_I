@@ -7,6 +7,7 @@ import { useGame } from "../contexts/GameContext"; // ゲームの状態（難�
 import testImage from "../assets/professor/test.png"; // 画像をインポート
 import "../styles/pages/HomePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
+import TestButton from "../components/common/TestButton.jsx";
 
 function HomePage() {
     // javaScriptが書ける↓
@@ -21,6 +22,10 @@ function HomePage() {
       <pre>{JSON.stringify(game, null, 2)}</pre>
 
       <img src={testImage} alt="画像test" style={{ width: "20%" }} />
+
+      {/* コンポーネントの例 */}
+      <TestButton onClick={() => console.log("テストボタンが押されました")}> component test , console.logを確認しよう！</TestButton>
+
 
       {/* 「ゲームスタート」ボタンを押すと /difficulty に移動 */}
       <button onClick={() => navigate("/difficulty")}>ゲームスタート</button>
