@@ -1,17 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+import "../../../../styles/components/common/Textbox/NameTag/NameTag.css";
 const NameTag = ({ name }) => {
     return (
-        <div>
-            <p>{name ? `名前: ${name}` : '名前がありません'}</p>
+        <div className="name-tag">
+
+            <p>{name ? name : '名前がありません'}</p>
         </div>
     );
 };
 
-NameTag.propTypes = {
-    name: PropTypes.string,
-};
 
-
+// style="background-color:white; border-radius: 5px; padding: 10px; margin: 10px; font-size: 16px;"
 export default NameTag;

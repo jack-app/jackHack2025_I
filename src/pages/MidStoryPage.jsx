@@ -6,7 +6,7 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
 import backgroundimage from "../assets/background/mid-story.svg";
-
+import NameTag from "../components/common/TextBox/NameTag/NameTag.jsx"; // 名前タグコンポーネントをインポート
 function MidStoryPage() {
     // javaScriptが書ける↓
   const navigate = useNavigate();
