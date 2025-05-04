@@ -23,17 +23,31 @@ function ProfessorSelectPage() {
 
   return (
     <div className="professor-select-page">
-      <h1>Professor Select Page</h1>
+    <h1>教授紹介・選択</h1>
 
-      {/* 現在のゲーム状態を表示 */}
-      <pre>{JSON.stringify(game, null, 2)}</pre>
-      <button onClick={() => selectProfessor(1)}>id : 1をsetする</button>
+    <ul id="professor-profiles">{/*各教授の紹介*/
+      professors.map((professor) => {
+        return (
+          <li className="professor-profile" key={professor.id} onClick={() => selectProfessor(professor.id)}>
+            <small>The Foobar University of Quxatics</small>
+            <div>
+              <h2>
+                {professor.name}
+              </h2>
+              <small>Fdsa Fdsa</small>
+              <p>{professor.personality}</p>
+            </div>
+            <img className="professor-portrait" src={professor.image} width="10" />
+          </li>
+        )
+      })
+    }</ul>
 
-      {/* 教授の名前一覧 */}
-      <div>{professorNames}</div>
-      
-      {/* 次へ進むボタン（タイピングゲームへ） */}
-      <button onClick={() => navigate("/mid-story")}>中間ストーリーへ</button>
+    {/* 次へ進むボタン（タイピングゲームへ） */}
+    <button onClick={() => navigate("/mid-story")}>mid-storyへ</button>
+
+    {/* 現在のゲーム状態を表示 */}
+    <pre>{JSON.stringify(game, null, 2)}</pre>
     </div>
   );
 }
