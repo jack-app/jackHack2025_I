@@ -23,23 +23,30 @@ function ProfessorExplainPage() {
 
   return (
     <div className="professor-explain-page">
-      <h1>ProfessorExplainPage Page</h1>
+      <h1>教授紹介・選択</h1>
+
+      <ul id="professor-profiles">{/*各教授の紹介*/
+        professors.map((professor) => {
+          return (
+            <li class="professor-profile" key={professor.id} onClick={() => selectProfessor(professor.id)}>
+              <small>The Foobar University of Quxatics</small>
+              <div>
+                <h2>
+                  {professor.name}
+                </h2>
+                <p>{professor.personality}</p>
+              </div>
+              <img class="professor-portrait" src={professor.image} width="10" />
+            </li>
+          )
+        })
+      }</ul>
+
+      {/* 次へ進むボタン（タイピングゲームへ） */}
+      <button onClick={() => navigate("/mid-story")}>mid-storyへ</button>
 
       {/* 現在のゲーム状態を表示 */}
       <pre>{JSON.stringify(game, null, 2)}</pre>
-      <button onClick={() => selectProfessor(1)}>id : 1をsetする</button>
-
-      {/* 次へ進むボタン（タイピングゲームへ） */}
-      <button onClick={() => navigate("/professor-select")}>professor-selectへ</button>
-
-      {/* 教授の説明 */}
-      {professor && (
-        <div className="professor-explanation">
-          <h2>{professor.name}の説明</h2>
-          <p>{professor.explanation}</p>
-        </div>
-      )} 
-      {/* professor && にしているのは、professorが存在する場合のみ説明を表示するため */}
     </div>
   );
 }

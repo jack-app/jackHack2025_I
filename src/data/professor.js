@@ -3,7 +3,7 @@ const professors = [
     id: 1,
     name: "雨日 アロハ",
     personality: "おおらかで天気と気分に左右される自由人",
-    image: "../assets/professor/test.png",
+    image: "src/assets/professor/test.png",
     pieces: [],
     endings: {
       friend: [
@@ -92,7 +92,7 @@ const professors = [
     id: 2,
     name: "鍵山 忍",
     personality: "冷静沈着なスパルタ型、努力を重視する完璧主義者",
-    image: "../assets/professor/test.png",
+    image: "src/assets/professor/test.png",
     pieces: [],
     endings: {
       friend: [
@@ -188,7 +188,7 @@ const professors = [
     id: 3,
     name: "速杉 瞬",
     personality: "超天才型、全てを一瞬で見抜く冷静な理論派",
-    image: "../assets/professor/test.png",
+    image: "src/assets/professor/test.png",
     pieces: [],
     endings: {
       friend: [
@@ -282,7 +282,7 @@ const professors = [
     id: 4,
     name: "出席 透",
     personality: "一見優しいが、油断すると一気に追い込んでくる飄々型",
-    image: "../assets/professor/test.png",
+    image: "src/assets/professor/test.png",
     pieces: [],
     endings: {
       friend: [
