@@ -6,7 +6,9 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
 import backgroundimage from "../assets/background/mid-story.svg";
+import TextArea from "../components/common/TextBox/TextArea/TextArea"; // TextAreaコンポーネントをインポート
 import NameTag from "../components/common/TextBox/NameTag/NameTag.jsx"; // 名前タグコンポーネントをインポート
+
 function MidStoryPage() {
     // javaScriptが書ける↓
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ function MidStoryPage() {
 
    // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
    const professor = professors.find((p) => p.id === game.chosenProfessorId);
-
+   let texts =["こんにちは","私の名前は","教授です","今日はあなたに特別な授業をします。","この授業では、あなたのタイピングスキルを向上させるためのゲームを行います。","準備はいいですか？","それでは、始めましょう！"];
   return (
     <div className="mid-story-page"
        style={{
@@ -34,6 +36,9 @@ function MidStoryPage() {
           <p>{professor.explanation}</p>
         </div>
       )}
+
+      
+      <TextArea texts={texts} nextRoute={"/typing"}/>
 
       {/* 難易度情報 */}
 
