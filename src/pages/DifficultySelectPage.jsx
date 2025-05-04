@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/DifficultySelectPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 // import professors from "../data/professor.js";
-import GameControlButton from "../components/common/GameControlButton";
+import GameControlButton from "../components/common/GameControllButton/GameControlButton";
 
 function DifficultySelectPage() {
   // javaScriptが書ける↓
