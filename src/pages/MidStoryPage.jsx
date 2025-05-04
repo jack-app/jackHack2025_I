@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
+import backgroundimage from "../assets/background/mid-story.svg";
 
 function MidStoryPage() {
     // javaScriptが書ける↓
@@ -15,7 +16,13 @@ function MidStoryPage() {
    const professor = professors.find((p) => p.id === game.chosenProfessorId);
 
   return (
-    <div className="mid-story-page">
+    <div className="mid-story-page"
+       style={{
+        backgroundImage: `url(${backgroundimage})`,
+        height: "100vh", 
+        backgroundSize: "cover", 
+      }}
+      >
       <h1>MidStoryPage Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
