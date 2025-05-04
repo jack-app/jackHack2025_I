@@ -133,6 +133,9 @@ src/
 ├──styles/     # CSSファイルをまとめる場所
 │   ├── base/        # リセットCSSや全体の基本スタイル
 │   ├── components/  # コンポーネント単位のスタイル
+│   |   ├── common/     # 汎用的なパーツ（例: 共通ボタンなど）
+│   |   ├── puzzle/     # パズル専用の部品
+│   |   ├── typing/     # タイピング専用の部品
 │   └── pages/       # ページ単位のスタイル
 │       ├── HomePage.css
 │       ├── PuzzlePage.css
