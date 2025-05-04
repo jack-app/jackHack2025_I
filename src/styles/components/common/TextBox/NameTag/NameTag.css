@@ -1,0 +1,13 @@
+.name-tag {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    width: 160px;
+    height: 27px;
+    font-size: 16px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}

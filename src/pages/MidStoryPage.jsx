@@ -7,6 +7,7 @@ import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(
 import professors from "../data/professor.js";
 import backgroundimage from "../assets/background/mid-story.svg";
 import TextArea from "../components/common/TextBox/TextArea/TextArea"; // TextAreaコンポーネントをインポート
+import NameTag from "../components/common/TextBox/NameTag/NameTag.jsx"; // 名前タグコンポーネントをインポート
 
 function MidStoryPage() {
     // javaScriptが書ける↓
