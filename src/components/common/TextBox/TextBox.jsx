@@ -1,25 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './TextBox.css';
+import NameTag from './NameTag/NameTag.jsx';
+import TextArea from './TextArea/TextArea.jsx';
+import "../../../styles/components/common/TextBox/TextBox.css"; // CSSスタイルをインポート(cssが適用されるようになる)"
 
-const TextBox = ({ value, onChange, placeholder, type = 'text', className = '' }) => {
+const TextBox = ({texts,nextRoute,name}) => {
     return (
-        <input
-            type={type}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            className={`text-box ${className}`}
-        />
+        <div>
+            <TextArea texts={texts} nextRoute={nextRoute}/>
+            <NameTag name={name} className={"nametag-in-textbox"}/>
+        </div>
     );
 };
 
-TextBox.propTypes = {
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    placeholder: PropTypes.string,
-    type: PropTypes.string,
-    className: PropTypes.string,
-};
+
 
 export default TextBox;

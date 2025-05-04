@@ -6,8 +6,7 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
 import backgroundimage from "../assets/background/mid-story.svg";
-import TextArea from "../components/common/TextBox/TextArea/TextArea"; // TextAreaコンポーネントをインポート
-import NameTag from "../components/common/TextBox/NameTag/NameTag.jsx"; // 名前タグコンポーネントをインポート
+import TextBox from "../components/common/TextBox/TextBox";
 
 function MidStoryPage() {
     // javaScriptが書ける↓
@@ -38,7 +37,7 @@ function MidStoryPage() {
       )}
 
       
-      <TextArea texts={texts} nextRoute={"/typing"}/>
+      <TextBox texts={texts} nextRoute={"/typing"} name={"北英輔"}/>
 
       {/* 難易度情報 */}
 

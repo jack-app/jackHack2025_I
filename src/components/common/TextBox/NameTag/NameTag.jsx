@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../../../styles/components/common/Textbox/NameTag/NameTag.css";
+import "../../../../styles/components/common/TextBox/NameTag/NameTag.css";
 const NameTag = ({ name }) => {
     return (
         <div className="name-tag">

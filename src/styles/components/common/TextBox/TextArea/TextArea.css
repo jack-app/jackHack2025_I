@@ -3,6 +3,7 @@
     border: 2px solid black; 
     border-radius: 4px; /* Optional: Rounded corners */
     padding: 15px; /* Inner spacing */
+    padding-left:10%;
     font-size: 16px; /* Font size */
     color: #000000; /* Text color */
     width: 80%; /* Full width */
@@ -18,7 +19,6 @@
 
 .text-area-container {
     position: relative; /* 子要素の位置を相対的に配置 */
-    width: 100%; /* コンテナの幅を全体に広げる */
     overflow: hidden; /* 子要素がはみ出さないようにする */
 }
 
