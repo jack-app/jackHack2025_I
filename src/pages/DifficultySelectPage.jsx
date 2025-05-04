@@ -5,7 +5,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/DifficultySelectPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
-import professors from "../data/professor.js";
+// import professors from "../data/professor.js";
+import GameControlButton from "../components/common/GameControlButton";
 
 function DifficultySelectPage() {
   // javaScriptが書ける↓
@@ -19,7 +20,7 @@ function DifficultySelectPage() {
   };
 
   // 教授データから名前のみを取得
-  const professorNames = professors.map((professor) => professor.name);
+  // const professorNames = professors.map((professor) => professor.name);
   
   return (
     <div className="difficulty-page">
@@ -29,10 +30,11 @@ function DifficultySelectPage() {
       <pre>{JSON.stringify(game, null, 2)}</pre>
 
       {/* 難易度選択ボタン */}
-      <button onClick={() => handleDifficultySelect("easy")}>簡単</button>
-
+      <GameControlButton label="EASY" onClick={() => handleDifficultySelect("easy")} />
+      <GameControlButton label="NORMAL" onClick={() => handleDifficultySelect("normal")} />
+      <GameControlButton label="HARD" onClick={() => handleDifficultySelect("hard")} />
       {/* 教授の名前一覧: */}
-      <div>{professorNames}</div>
+      {/* <div>{professorNames}</div> */}
 
       {/* 次へ進むボタン（パズル画面へ） */}
       <button onClick={() => navigate("/puzzle")}>パズルへ</button>

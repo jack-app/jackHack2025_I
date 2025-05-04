@@ -1,0 +1,21 @@
+.game-control-button {
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    margin: 10px;
+    width: 30%;
+    display: block;
+    font-size: xx-large;
+
+}
+
+/* 親要素のスタイル */
+.parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
