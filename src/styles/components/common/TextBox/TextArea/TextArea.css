@@ -1,0 +1,39 @@
+.text-area {
+    background-color: #ffffff; /* White background */
+    border: 2px solid black; 
+    border-radius: 4px; /* Optional: Rounded corners */
+    padding: 8px; /* Inner spacing */
+    font-size: 16px; /* Font size */
+    color: #000000; /* Text color */
+    width: 80%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in width */
+    margin: 0 10%; /* Add horizontal margin with 10% on both sides */
+}
+
+.text-area:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #007BFF; /* Optional: Change border color on focus */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Optional: Add focus shadow */
+}
+
+.text-area-container {
+    position: relative; /* 子要素の位置を相対的に配置 */
+    width: 100%; /* コンテナの幅を全体に広げる */
+    overflow: hidden; /* 子要素がはみ出さないようにする */
+}
+
+.start-game-text {
+    position: absolute;
+    bottom: 10px; /* 下から10pxの位置 */
+    right: 10px; /* 右から10pxの位置 */
+    font-size: 14px; /* フォントサイズ */
+    color: #007BFF; /* テキストカラー */
+    font-weight: bold; /* 太字 */
+    max-width: 90%; /* 親要素の幅の90%以内に制限 */
+    overflow: hidden; /* はみ出した部分を隠す */
+    text-overflow: ellipsis; /* はみ出した部分を省略記号にする */
+}
+
+.text-area-container .start-game-text {
+    display: block; /* 条件を満たした場合に表示 */
+}
