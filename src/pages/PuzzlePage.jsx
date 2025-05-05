@@ -13,20 +13,15 @@ const PuzzlePage = () => {
   const [gridMap, setGridMap] = useState(
     Array.from({ length: 5 }, () => Array(5).fill(null))
   );
+  const [isAllRequiredFilled, setIsAllRequiredFilled] = useState(false);
+  const days = ['月', '火', '水', '木', '金'];
+  const requiredCells = [
+    [1, 1], // 火曜2限
+    [2, 3], // 木曜3限
+    [4, 0], // 月曜5限
+  ];
 
   const pieceStructures = {
-    // piece1: { cols: 1, rows: 6, nullCells: [0,5] },
-    // piece2: { cols: 1, rows: 6, nullCells: [3,4] },
-    // piece3: { cols: 1, rows: 6, nullCells: [2,3] },
-    // piece4: { cols: 1, rows: 5, nullCells: [3] },
-    // piece5: { cols: 1, rows: 6, nullCells: [2,3] },
-    // piece6: { cols: 1, rows: 6, nullCells: [0,1] },
-    // piece7: { cols: 1, rows: 6, nullCells: [2,5]  },
-    // piece8: { cols: 1, rows: 6, nullCells: [2,3] },
-    // piece9: {  cols: 1, rows: 6, nullCells: [0,2] },
-    // piece10: {cols: 1, rows: 6, nullCells: [2,5]  },
-    // piece11: {cols: 1, rows: 6, nullCells: [1,2]  },
-    // piece12: { cols: 1, rows: 4, nullCells: [] },
     piece1: { // Z
       cols: 4,
       rows: 4,
@@ -92,10 +87,6 @@ const PuzzlePage = () => {
 
   const boardRef = useRef(null);
 
-  useEffect(() => {
-    resetPuzzlePiece();
-  }, []);
-
   const resetPuzzlePiece = () => {
     const puzzlePieces = document.querySelectorAll('.puzzle-piece');
     puzzlePieces.forEach((piece, index)  => {
@@ -127,19 +118,6 @@ const PuzzlePage = () => {
     });
   };
 
-  // const onTouchStart = (event) => {
-  //   if (event.target.parentElement.classList.contains('puzzle-piece')) {
-  //     event.preventDefault();
-  //     const piece = event.target.parentElement;
-  //     setActivePiece(piece);
-  //     piece.style.zIndex = 1000;
-
-  //     const touch = event.type === 'touchstart' ? event.touches[0] : event;
-  //     setDx(touch.pageX - piece.offsetLeft);
-  //     setDy(touch.pageY - piece.offsetTop);
-  //     setIsClick(true);
-  //   }
-  // };
   const onTouchStart = (event) => {
     if (event.target.classList.contains('puzzle-cell')) {
       const cell = event.target;
@@ -206,31 +184,7 @@ const PuzzlePage = () => {
     }
   };
 
-  const getBoundingBox = (structure) => {
-    const { rows, cols, nullCells } = structure;
-  
-    let minRow = rows, maxRow = -1;
-    let minCol = cols, maxCol = -1;
-  
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < cols; j++) {
-        const idx = i * cols + j;
-        if (!nullCells.includes(idx)) {
-          if (i < minRow) minRow = i;
-          if (i > maxRow) maxRow = i;
-          if (j < minCol) minCol = j;
-          if (j > maxCol) maxCol = j;
-        }
-      }
-    }
-  
-    return {
-      startRow: minRow,
-      endRow: maxRow,
-      startCol: minCol,
-      endCol: maxCol
-    };
-  };
+ 
 
   const removePieceFromGrid = (pieceId, gridMap) => {
     return gridMap.map(row =>
@@ -258,6 +212,13 @@ const PuzzlePage = () => {
   const { r: offsetR, c: offsetC } = grabOffset;
 
   let is_setting = false;
+
+  // === 1. gridMap からピースを全消去 ===
+  const cleanedGrid = removePieceFromGrid(pieceId, gridMap);
+  setGridMap(cleanedGrid);
+  console.log(`updatedGrid: ${JSON.stringify(cleanedGrid )}`);
+
+
   if (i >= 0 && i < 5 && j >= 0 && j < 5) {
     // ピースが枠外や重なっていないかチェック
     const isValidPlacement = () => {
@@ -286,7 +247,7 @@ const PuzzlePage = () => {
       console.log(`Valid placement at i: ${i}, j: ${j}`);
       const x = null;
       const y = null;
-
+      
       // gridMapを更新
       const updatedGrid = gridMap.map(row => [...row]);
       for (let r = 0; r < rows; r++) {
@@ -347,29 +308,36 @@ const PuzzlePage = () => {
     // element.setAttribute('data-pos', pos);
   };
 
-  useEffect(() => {
-    document.addEventListener('touchmove', onTouchMove, false);
-    document.addEventListener('mousemove', onTouchMove, false);
-    document.addEventListener('touchend', onTouchEnd, false);
-    document.addEventListener('mouseup', onTouchEnd, false);
-
-    return () => {
-      document.removeEventListener('touchmove', onTouchMove);
-      document.removeEventListener('mousemove', onTouchMove);
-      document.removeEventListener('touchend', onTouchEnd);
-      document.removeEventListener('mouseup', onTouchEnd);
-    };
-  }, [activePiece, dx, dy, isClick]);
-
   const renderBoardCells = () => {
     const cells = [];
-    for (let i = 0; i < 5; i++) {
-      for (let j = 0; j < 5; j++) {
-        const id = `cell-${i}-${j}`;
-        cells.push(<div key={id} id={id} className="board-cell" />);
-      }
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 5; j++) {
+      const id = `cell-${i}-${j}`;
+      const label = `${days[j]}${i + 1}`;
+      const isLastRow = i === 4;
+      const isLastCol = j === 4;
+      
+      const isRequired = requiredCells.some(
+        ([reqI, reqJ]) => reqI === i && reqJ === j
+      );
+
+      const cellStyle = {
+        borderRight: isLastCol ? '1px solid var(--board-color)  ': 'none',
+        borderBottom: isLastRow ? '1px solid var(--board-color) ' : 'none',
+        backgroundColor: isRequired ? '#664B4F' : '#FFF6EE',
+        color: isRequired ? 'white' : '#664B4F',
+
+      };
+
+      cells.push(
+        <div key={id} id={id} className="board-cell" style={cellStyle}>
+          <span className="cell-label">{label}</span>
+        </div>
+      );
     }
-    return cells;
+  }
+  return cells;
+
   };
 
   const renderPuzzlePieces = () => {
@@ -406,6 +374,33 @@ const PuzzlePage = () => {
     });
   };
 
+  useEffect(() => {
+    resetPuzzlePiece();
+  }, []);
+
+
+  useEffect(() => {
+    const allFilled = requiredCells.every(
+      ([i, j]) => gridMap[i][j] !== null
+    );
+    setIsAllRequiredFilled(allFilled);
+  }, [gridMap]);
+
+  
+  useEffect(() => {
+    document.addEventListener('touchmove', onTouchMove, false);
+    document.addEventListener('mousemove', onTouchMove, false);
+    document.addEventListener('touchend', onTouchEnd, false);
+    document.addEventListener('mouseup', onTouchEnd, false);
+
+    return () => {
+      document.removeEventListener('touchmove', onTouchMove);
+      document.removeEventListener('mousemove', onTouchMove);
+      document.removeEventListener('touchend', onTouchEnd);
+      document.removeEventListener('mouseup', onTouchEnd);
+    };
+  }, [activePiece, dx, dy, isClick]);
+  
   return (
     <div className="puzzle-page">
       <div className="board-wrapper">
@@ -415,11 +410,26 @@ const PuzzlePage = () => {
         </div>
       </div>
 
-      {/* <div className="ground">
-        {renderPuzzlePieces()}
-      </div> */}
-
-      <button onClick={resetPuzzlePiece}>Reset Puzzle</button>
+      <button
+  onClick={() => {
+    if (isAllRequiredFilled) {
+      // ページ遷移処理など（例：useNavigateを使ってページ遷移）
+      console.log("遷移します！");
+    }
+  }}
+  disabled={!isAllRequiredFilled}
+  style={{
+    backgroundColor: isAllRequiredFilled ? '#8AA99B' : '#ccc',
+    color: isAllRequiredFilled ? 'white' : '#888',
+    cursor: isAllRequiredFilled ? 'pointer' : 'not-allowed',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '6px',
+    marginTop: '20px'
+  }}
+>
+  次へ進む
+</button>
     </div>
   );
 };

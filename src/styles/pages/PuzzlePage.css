@@ -2,11 +2,11 @@
 :root {
   --board-size: 300px;
   --cell-size: 60px;
-  --board-color: #666;
+  --board-color: #664B4F;
 }
 
 :root[data-theme-mode='dark'] {
-  --board-color: #999;
+  --board-color: #664B4F;
 }
 
 /* Board */
@@ -20,26 +20,42 @@
   margin: 10px auto 0;
   width: var(--board-size);
   height: var(--board-size);
-  border: 1px solid var(--board-color);
+  /* border: 1px solid var(--board-color); */
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0;
 }
-
+/* 
 .board-cell {
   padding: 8px 0 0;
   border: 1px solid var(--board-color);
   text-align: center;
-}
+} */
 
 .board-cell.null {
   background-color: var(--board-color);
 }
 
-.board-cell.today {
-  background-color: var(--accent);
-  color: var(--main-bg);
+.board-cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+  border: 1px solid var(--board-color) ; 
+  box-sizing: border-box;
+}
+
+.cell-label {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-size: 0.6rem;
+  /* color: #666; */
+  pointer-events: none;
 }
 
 /* Ground */
@@ -92,75 +108,35 @@
   pointer-events: auto;
 }
 
-#piece1 .puzzle-cell {
+#piece1 .puzzle-cell,
+#piece2 .puzzle-cell,
+#piece3 .puzzle-cell{
   background-color: #66c3a6;
 }
 
-#piece2 .puzzle-cell {
+#piece4 .puzzle-cell,
+#piece5 .puzzle-cell,
+#piece6 .puzzle-cell{
   background-color: #fd8e62;
 }
 
-#piece3 .puzzle-cell {
+#piece7 .puzzle-cell,
+#piece8 .puzzle-cell,
+#piece9 .puzzle-cell{
   background-color: #8ea1cc;
 }
 
-#piece4 .puzzle-cell {
+#piece10 .puzzle-cell,
+#piece11 .puzzle-cell,
+#piece12 .puzzle-cell{
   background-color: #e88bc4;
 }
-
-#piece5 .puzzle-cell {
-  background-color: #a7d954;
-}
-
-#piece6 .puzzle-cell {
-  background-color: #ffda2f;
-}
-
-#piece7 .puzzle-cell {
-  background-color: #e6c595;
-}
-
-#piece8 .puzzle-cell {
-  background-color: #b4b4b4;
-}
-
-#piece9 .puzzle-cell {
-  background-color: #b4b4b4;
-}
-
-
-#piece10 .puzzle-cell {
-  background-color: #b4b4b4;
-}
-
-
-#piece11 .puzzle-cell {
-  background-color: #b4b4b4;
-}
-#piece12 .puzzle-cell {
-  background-color: #b4b4b4;
-}
-
 
 .puzzle-cell.null {
   visibility: hidden !important;
 }
 
 
-/* Record */
-.record-board-wrapper {
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  width: var(--board-size);
-}
-
-.record-board {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0;
-  border: 1px solid var(--board-color);
-}
 
 .board-cell.link {
   text-decoration: underline;
@@ -169,45 +145,4 @@
 
 .board-cell.clear {
   font-size: 0.95rem;
-}
-
-/* Record Import/Export */
-.record-import-export {
-  margin: 20px auto;
-  width: var(--board-size);
-  display: flex;
-  flex-direction: column;
-}
-
-#stored-record {
-  width: 100%;
-  height: 60px;
-  margin-bottom: 10px;
-  font-family: monospace;
-}
-
-/* Buttons */
-button {
-  display: block;
-  margin: 10px auto;
-  height: 30px;
-  width: 240px;
-  border-radius: 5px;
-  font-size: 1em;
-  font-family: inherit;
-  color: #333;
-  background-color: var(--theme-light);
-  border: 1px solid var(--theme-light);
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #fff;
-  border: 1px solid var(--theme-light);
-}
-
-button.inactive {
-  background-color: #999;
-  border: 1px solid #999;
-  cursor: not-allowed;
 }
