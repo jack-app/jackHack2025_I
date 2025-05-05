@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/EndingPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
+import ShareButton from "../components/common/share-button";
 
 // 画像のインポート
 import happyEnding from "../assets/background/happyEnding.svg";
@@ -47,7 +48,7 @@ function EndingPage() {
       backgroundImage: `url(${endingImage})`
       }}
     >
-
+ <ShareButton />
 
       {/* タイトル画面に戻るボタン */}
       <button 

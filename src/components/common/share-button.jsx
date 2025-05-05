@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useGame } from "../../contexts/GameContext";
-import { LineShareButton,LineIcon } from 'react-share';
+import { LineShareButton,LineIcon,TwitterShareButton, TwitterIcon } from 'react-share';
 import professors from '../../data/professor';  
 import Button from '@mui/material/Button';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import "../../styles/components/common/shareButton.css"
 const URL="https://jack-app.github.io/jackHack2025_I/";
 
 const ShareButton = () => {
@@ -13,6 +14,9 @@ const ShareButton = () => {
   const lovepointMap = game.professorLovepointMap;
   const professorId = game.chosenProfessorId;
   const professor = professors.find((p) => p.id === professorId);
+const ShareButtonTwitter=()=>{
+
+}
 
   if (!professor) return null;
 
@@ -31,15 +35,18 @@ const ShareButton = () => {
   };
 
   return (
-    <div>
-        <h1></h1>
-      <LineShareButton url={URL} title={QUOTE}>
-        <LineIcon size={24} round />
-      </LineShareButton>
+    <div className='shareButtonParent'>
 
-      <Tooltip title="コピー">
+      <LineShareButton className='ShareButton' url={URL} title={QUOTE}>
+        <LineIcon size={40} round />
+      </LineShareButton>
+      <TwitterShareButton className='ShareButtonTwitter' url={URL} title={QUOTE}>
+        <TwitterIcon size={40} round/>
+      </TwitterShareButton>
+
+      <Tooltip className='copyToClipboard' title="コピー">
         <IconButton color="primary" size="small" onClick={copyToClipboard}>
-          <ContentCopyIcon fontSize="small" />
+          <ContentCopyIcon fontSize="large" />
         </IconButton>
       </Tooltip>
 
