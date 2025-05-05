@@ -63,16 +63,15 @@ const professors = [
       ]
     ],
     typingTexts: [
-      ["休みます", "yasumimasu"],
-      ["オンデマンドで見ます", "ondemando de mimasu"],
-      ["アロハ先生最高", "aroha sensei saikou"],
-      ["体調不良です", "taichou furyou desu"],
-      ["雨なので家から受講します", "ame nanode ie kara jukou shimasu"],
-      ["追って提出します", "otte teishutsu shimasu"],
-      ["次回出ます", "jikai demasu"],
-      ["自由さに憧れてます", "jiyuusa ni akogaretemasu"],
-      ["今日はサーフィン気分です", "kyou wa saafin kibun desu"],
-      ["授業楽しみにしてます", "jugyou tanoshimi ni shitemasu"]
+      [["遊びに行くため休みます", "asobiniikutameyasumimasu",-20],
+      ["今日休むからよろ", "kyouyasmukarayoro",-50],
+      ["雨なので休みます", "amenanodeyasumimasu",20]],
+      [["課題はできるだけ早く提出します", "kadaihadekirudakehayakuteisyutusimasu",20],
+      ["提出期限を延ばしてください。", "teisyutukigennwonobasitekudasai",-10],
+      ["晴れるようにてるてる坊主を作りました", "hareruyouniteruterubouzuwotukurimasita",50],],
+      [["単位ください", "tanikudasai",-10],
+      ["あなたのことが嫌いです", "anatanokotogakiraidesu",-200],
+      ["授業楽しみにしてます", "jugyoutanosiminisitemasu",10]]
     ],
     reactions: {
       success: [
@@ -153,21 +152,21 @@ const professors = [
       ]
     ],
     typingTexts: [
-      ["欠席します", "kessekisimasu"],
-      ["資料のパスワードを解読できなかったため遅れました", "shiryou no pasuwaado wo kaidoku dekinakatta tame okuremashita"],
-      ["提出必ず間に合わせます", "teishutsu kanarazu maniawasemasu"],
-      ["急用が入りました", "kyuuyou ga hairimashita"],
-      ["テスト対策中です", "tesuto taisaku chuu desu"],
-      ["次回こそ完璧にします", "jikai koso kanpeki ni shimasu"],
-      ["頑張ります", "ganbarimasu"],
-      ["全力で取り組みます", "zenryoku de torikumimasu"],
-      ["復習して追いつきます", "fukushuu shite oitsukimasu"],
-      ["厳しさに応えたいです", "kibishisa ni kotaetai desu"],
-      ["絶対にクリアします", "zettai ni kuria shimasu"],
-      ["体調管理も取り組みます", "taichou kanri mo torikumimasu"],
+      [["体調がすぐれないため欠席します", "taichougasugurenaitamekessekishimasu",20],
+      ["あなたのパスワードのせいで遅れました", "anatanopasuwa-donoseideokuremashita",-30],
+      ["提出必ず間に合わせます", "teishutsukanarazumaniawasemasu",20]],
+      [["課題の範囲教えてください", "kadainohaniosietekudasai",10],
+      ["テストいらないです", "tesutoiranaidesu",-100],
+      ["先生の授業は世界で一番わかりやすいです", "senseinojugyouhasekaideitibanwakariyasuidesu",100]],
+      [["単位ください", "tanikudasai",-50],
+      ["先生にどこまでもついていきます", "senseinidokomademotsuiteikimasu",20],
+      ["もっと私に厳しくしてください", "mottowatashinikibishikushitekudasai",-100]],
+     [ ["よろしくお願いいたします", "yoroshikuonegaiitashimasu",20],
+      ["絶対にクリアします", "zettainikuriashimasu",20],
+      ["体調管理も取り組みます", "taichoukanrimotorikumimasu",20]],[
       ["単位取りに行きます", "tani tori ni ikimasu"],
       ["先生に認められたいです", "sensei ni mitomeraretai desu"],
-      ["この試練を乗り越えます", "kono shiren wo norikoemasu"]
+      ["この試練を乗り越えます", "kono shiren wo norikoemasu"]]
     ],
     reactions: {
       success: [
@@ -247,21 +246,21 @@ const professors = [
       
     ],
     typingTexts: [
-      ["申し訳ありません急な用事でリアル出席できません", "moushiwake arimasen kyuu na youji de riaru shusseki dekimasen"],
-      ["体調が優れず配信で追いかけます", "taichou ga sugurezu haishin de oi kakemasu"],
-      ["次の小テスト全力で対策します", "tsugi no shou tesuto zenryoku de taisaku shimasu"],
-      ["オンラインでも遅れずキャッチアップします", "onrain demo okurezu kyacchi appu shimasu"],
-      ["理解を深めるために復習しています", "rikai wo fukameru tame ni fukushuu shiteimasu"],
-      ["次回授業は必ずリアルタイム参加します", "jikai jugyou wa kanarazu riaru taimu sanka shimasu"],
-      ["単位必ず取ります", "tani kanarazu torimasu"],
-      ["先生の期待に応えたいです", "sensei no kitai ni kotaetai desu"],
-      ["今度理解度テストも受けてみたいです", "kondo rikaido tesuto mo ukete mitai desu"],
-      ["配信を何度も見直して復習します", "haishin wo nando mo minaoshite fukushuu shimasu"],
-      ["このスピードについていきます", "kono supiido ni tsuite ikimasu"],
-      ["絶対に落ちこぼれません", "zettai ni ochikoboremasen"],
-      ["先生の指導のもと成長したいです", "sensei no shidou no moto seichou shitai desu"],
-      ["どんな状況でも諦めません", "donna joukyou demo akiramemasen"],
-      ["先生のスピード感に憧れています", "sensei no supiido kan ni akogareteimasu"]
+      [ ["申し訳ありませんリアル出席できません", "moushiwakearimasenriarushussekidekimasen",20],
+      ["体調が優れず配信で追いかけます", "taichougasugurezuhaishindeoikakemasu",0],
+      ["小テスト知りませんでした", "shoutesutoshirimasendeshita",-20]],
+      [["オンラインでも遅れずついていきます", "onraindemookurezutuiteikimasu",10],
+      ["先生の授業速すぎます", "senseinojugyouhayasugimasu",-10],
+      ["単位ください", "tanikudasai",-50]],
+      [["授業退屈です", "jugyoutaikutudesu",-50],
+      ["先生の期待に応えたいです", "sensei no kitai ni kotaetai desu",20],
+      ["マイペースでいたいです", "maipe-sudeitaidesu",-10]],
+      [["私のスピードは五十三万です", "watashinosupi-dohagojuusanmandesu",53],
+      ["スローライフは最高です", "suro-raifuhasaikoudesu",-10],
+      ["絶対に落ちこぼれません", "zettai ni ochikoboremasen",20]],
+      [["先生の指導のもと成長したいです", "sensei no shidou no moto seichou shitai desu",20],
+      ["どんな状況でも諦めません", "donna joukyou demo akiramemasen",10],
+      ["先生のスピード感に憧れています", "sensei no supiido kan ni akogareteimasu",30]]
     ],
     reactions: {
       success: [
@@ -343,21 +342,21 @@ const professors = [
       ],      
     ],
     typingTexts: [
-      ["すみません急用で欠席します", "sumimasen kyuuyou de kesseki shimasu"],
-      ["体調不良のため出席できません", "taichou furyou no tame shusseki dekimasen"],
-      ["次回は必ず前の方に座ります", "jikai wa kanarazu mae no hou ni suwarimasu"],
-      ["テスト対策中です復習してます", "tesuto taisaku chuu desu fukushuu shitemasu"],
-      ["必ず追いつきますのでご安心を", "kanarazu oitsukimasu node goanshin wo"],
-      ["遅刻しそうですが絶対行きます", "chikoku shisou desu ga zettai ikimasu"],
-      ["先生の授業楽しみにしてます", "sensei no jugyou tanoshimi ni shitemasu"],
-      ["サボらず出席点稼ぎます", "saborazu shusseki ten kasegimasu"],
-      ["前に座っても怖がらず頑張ります", "mae ni suwatte mo kowagarazu ganbarimasu"],
-      ["授業の内容しっかり復習しました", "jugyou no naiyou shikkari fukushuu shimashita"],
-      ["今日休んでも心は教室にいます", "kyou yasunde mo kokoro wa kyoushitsu ni imasu"],
-      ["次の出席絶対取ります", "tsugi no shusseki zettai torimasu"],
-      ["先生の一言を励みに頑張ってます", "sensei no hitokoto wo hagemi ni ganbattemasu"],
-      ["成績絶対あきらめません", "seiseki zettai akiramemasen"],
-      ["単位ゲット必ず達成します", "tani getto kanarazu tassei shimasu"]
+      [["出席の紙に名前書き忘れてました", "syussekinokamininamaekakiwasuretemashita",-30],
+      ["体調不良のため出席できません", "taicyouhuryounotamesyussekidekimasen",10],
+      ["次回は必ず前の方に座ります", "jikaiwakanarazumaenohounisuwarimasu",30]],
+      [["単位ください", "tanikudasai",-50],
+      ["もっと私に話しかけてください", "mottowatasinihanasikaketekudasai",20],
+      ["自主休講しました", "jisyukyuukoushimasita",-50]],
+      [["先生の授業楽しみにしてます", "senseinojugyoutanosiminisitemasu",20],
+      ["授業退屈です", "jugyoutaikutudesu",-50],
+      ["前に座っても怖がらず頑張ります", "maenisuwattemokowagarazuganbarimasu",30]],
+      [["授業の内容しっかり復習しました", "jugyounonaiyousikkarihukusyuusimasita",20],
+      ["出席点をくれませんかくれませんか", "syussekitennwokuremasenka",-50],
+      ["小テスト簡単にしてください", "syoutesutokantannnisitekudasai",-50]],
+      [["先生の一言を励みに頑張ってます", "senseinohitokotowohageminiganbattemasu",20],
+      ["成績絶対あきらめません", "seisekizettaiakiramemasen",10],
+      ["単位ゲット必ず達成します", "tannigettokanarazutasseisimasu",20]],
     ],
     reactions: {
       success: [

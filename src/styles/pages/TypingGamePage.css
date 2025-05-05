@@ -1,3 +1,12 @@
 .typing-game-page h1 {
   color: #0004ff;
 }
+.correct {
+  color:aqua;
+}
+.ato {
+  color: brown;
+}
+.current {
+  color: #ffdd00;
+}
