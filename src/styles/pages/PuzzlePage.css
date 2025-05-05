@@ -1,3 +1,67 @@
+/* src/styles/pages/PuzzlePage.css */
+
+.grid-wrapper {
+  width: 400px;
+  height: calc(6 * 60px + 5 * 2px);
+  /* position: relative; */
+  /* display: inline-block; */
+}
+
+/* 左上の設定／ヘルプボタン */
+.top-left-buttons {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.grid-container {
+  position: relative;
+  display: grid;
+  /* 行×列ともにセルを 60px 固定に */
+  grid-template-rows:    repeat(6, 60px);
+  grid-template-columns: repeat(5, 60px);
+  gap: 2px;
+  /* 背景はセル間の隙間用 */
+  background-color: #888;
+}
+
+/* 各セル */
+.grid-cell {
+  background-color: #fff;
+  border: 1px solid #555;
+  box-sizing: border-box;
+}
+
+/* ドラッグ可能なタイル画像 */
+.tile {
+  position: absolute;
+  width: calc((100% - 4 * 2px) / 5);
+  height: calc((100% - 5 * 2px) / 6);
+  cursor: grab;
+  user-select: none;
+  z-index: 5;
+}
+
+/* テスト用ドロップエリア */
+.drop-area {
+  position: relative;
+  background-color: #888;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 5 / 6;
+  /* overflow: hidden; */
+}
+
+/* プール領域用 */
+.piece-palette {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
 .puzzle-page h1 {
   color: #ae00ff;
 }
