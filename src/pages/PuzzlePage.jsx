@@ -9,6 +9,7 @@ const PuzzlePage = () => {
   const [dx, setDx] = useState(0);
   const [dy, setDy] = useState(0);
   const [isClick, setIsClick] = useState(false);
+  const [grabOffset, setGrabOffset] = useState({ r: 0, c: 0 });
   const [gridMap, setGridMap] = useState(
     Array.from({ length: 5 }, () => Array(5).fill(null))
   );
@@ -126,13 +127,48 @@ const PuzzlePage = () => {
     });
   };
 
+  // const onTouchStart = (event) => {
+  //   if (event.target.parentElement.classList.contains('puzzle-piece')) {
+  //     event.preventDefault();
+  //     const piece = event.target.parentElement;
+  //     setActivePiece(piece);
+  //     piece.style.zIndex = 1000;
+
+  //     const touch = event.type === 'touchstart' ? event.touches[0] : event;
+  //     setDx(touch.pageX - piece.offsetLeft);
+  //     setDy(touch.pageY - piece.offsetTop);
+  //     setIsClick(true);
+  //   }
+  // };
   const onTouchStart = (event) => {
-    if (event.target.parentElement.classList.contains('puzzle-piece')) {
+    if (event.target.classList.contains('puzzle-cell')) {
+      const cell = event.target;
+      const piece = cell.parentElement;
+      if (!piece.classList.contains('puzzle-piece')) return;
+  
+      const cells = Array.from(piece.children);
+      const index = cells.indexOf(cell);
+
+      const structure = pieceStructures[piece.id];
+      const grabRow = Math.floor(index / structure.cols);
+      const grabCol = index % structure.cols;
+
+      // 属性として保持
+      piece.setAttribute('data-grab-row', grabRow);
+      piece.setAttribute('data-grab-col', grabCol);
+  
+      const pieceId = piece.id;
+      const { cols } = pieceStructures[pieceId];
+  
+      const r = Math.floor(index / cols);
+      const c = index % cols;
+      setGrabOffset({ r, c });
+      console.log(`Grabbed cell: ${pieceId}, r: ${r}, c: ${c}`);
+  
       event.preventDefault();
-      const piece = event.target.parentElement;
       setActivePiece(piece);
       piece.style.zIndex = 1000;
-
+  
       const touch = event.type === 'touchstart' ? event.touches[0] : event;
       setDx(touch.pageX - piece.offsetLeft);
       setDy(touch.pageY - piece.offsetTop);
@@ -198,7 +234,6 @@ const PuzzlePage = () => {
 
   const placeActivePiece = (touch) => {
     const boardBounds = boardRef.current.getBoundingClientRect();
-  const pieceBounds = activePiece.getBoundingClientRect();
 
   const mouseX = touch.pageX;
   const mouseY = touch.pageY;
@@ -210,23 +245,23 @@ const PuzzlePage = () => {
   console.log(`cellSize: ${cellSize}`);
   console.log(`i: ${i}, j: ${j}`);
 
-  let pos = 0;
-  if (i >= 0 && i < 5 && j >= 0 && j < 5) {
-    const pieceId = activePiece.id;
-    const structure = pieceStructures[pieceId];
-    const { rows, cols, nullCells } = structure;
-    const { startRow, endRow } = getBoundingBox(structure);
+  const pieceId = activePiece.id;
+  const structure = pieceStructures[pieceId];
+  const { rows, cols, nullCells } = structure;
 
+  const { r: offsetR, c: offsetC } = grabOffset;
+
+  let is_setting = false;
+  if (i >= 0 && i < 5 && j >= 0 && j < 5) {
     // ピースが枠外や重なっていないかチェック
     const isValidPlacement = () => {
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const idx = r * cols + c;
-          console.log(`idx: ${idx}`);
           if (nullCells.includes(idx)) continue;
   
-          const ni = i + r;
-          const nj = j + c;
+          const ni = i - offsetR + r;
+          const nj = j - offsetC + c;
           console.log(`ni: ${ni}, nj: ${nj}`);
           // 枠外チェック
           if (ni < 0 || ni >= 5 || nj < 0 || nj >= 5) return false;
@@ -243,7 +278,8 @@ const PuzzlePage = () => {
 
     if (isValidPlacement()) {
       console.log(`Valid placement at i: ${i}, j: ${j}`);
-      pos = i * 5 + j + 1;
+      const x = null;
+      const y = null;
 
       // gridMapを更新
       const updatedGrid = gridMap.map(row => [...row]);
@@ -251,15 +287,18 @@ const PuzzlePage = () => {
         for (let c = 0; c < cols; c++) {
           const idx = r * cols + c;
           if (nullCells.includes(idx)) continue;
-          updatedGrid[i + r][j + c] = pieceId;
+          const ni = i - offsetR + r;
+        const nj = j - offsetC + c;
+        updatedGrid[ni][nj] = pieceId;
         }
       }
       console.log(`updatedGrid: ${JSON.stringify(updatedGrid)}`);
       setGridMap(updatedGrid);
+      is_setting = true;
     }
   }
 
-  setPosition(activePiece, pos);
+  setPosition(activePiece, i - offsetR,j-offsetC, is_setting);
   };
 
   const setStyle = (element) => {
@@ -269,18 +308,20 @@ const PuzzlePage = () => {
     element.style.transform = `scale(${scale}, ${scale}) rotate(${rotation}deg)`;
   };
 
-  const setPosition = (element, pos) => {
+  const setPosition = (element, i,j,is_setting) => {
     const bounds = boardRef.current.getBoundingClientRect();
+    // const pieceId = element.id;
+    // const { cols, nullCells } = pieceStructures[pieceId];
 
-    if (pos > 0) {
-      const i = Math.floor((pos - 1) / 5);
-      const j = (pos - 1) % 5;
-      console.log(`i: ${i}, j: ${j}`);
-      console.log(`bounds: ${JSON.stringify(bounds)}`);
-      console.log(`bounds.left: ${bounds.left}, bounds.top: ${bounds.top}`);
-      
-      element.style.left = `${j * cellSize - 1}px`;
-      element.style.top = `${i * cellSize - 1}px`;
+    if (is_setting) {
+    //  // 掴んだセルのオフセットを考慮
+    const { r: offsetR, c: offsetC } = grabOffset;
+    const targetTop = i * cellSize;
+    const targetLeft = j * cellSize;
+    console.log(`targetTop: ${targetTop}, targetLeft: ${targetLeft}`);
+
+    element.style.top = `${targetTop}px`;
+    element.style.left = `${targetLeft}px`;
       console.log(`element.style.left: ${element.style.left}, element.style.top: ${element.style.top}`);
       console.log(`cellSize: ${cellSize}`);
       element.setAttribute('data-scale', 1);
@@ -294,7 +335,7 @@ const PuzzlePage = () => {
     element.setAttribute('data-scale', groundPieceSizeRatio);
     }
 
-    element.setAttribute('data-pos', pos);
+    // element.setAttribute('data-pos', pos);
   };
 
   useEffect(() => {
