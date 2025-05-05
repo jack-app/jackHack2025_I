@@ -26,19 +26,22 @@ function ProfessorSelectPage() {
       <h1>教授紹介・選択</h1>
 
       <ul id="professor-list">{/*各教授の紹介*/
-        professors.map((professor) => {
+        professors.map(professor => {
           return (
-            <li className="professor-card" key={professor.id} onClick={() => selectProfessor(professor.id)}>
-              <header>
-                <small>ほげほげ大学 The Foobar University of Quxatics</small>
-              </header>
-              <div className="professor-card-contents">
-                <div className="professor-profile">
-                  <h2>{professor.name}</h2>
-                  <small>Name Name</small>
-                  <p>{professor.personality}</p>
+            <li key={professor.id} className="professor-card-slot">
+              <div className={`professor-card ${professor.id == game.chosenProfessorId ? "chosen" : "fdsa"}`} onClick={() => selectProfessor(professor.id)}>
+                <header>
+                  <small>ほげほげ大学 The Foobar University of Quxatics</small>
+                </header>
+                <div className="professor-card-contents">
+                  <div className="professor-profile">
+                    <h2>{professor.name}</h2>
+                    <small>{professor.latinScriptName}</small>
+                    <p>{professor.personality}</p>
+                  </div>
+                  <div className="professor-portrait" style={{"background-image": `url(${professor.image})` }}>
+                  </div>
                 </div>
-                <img className="professor-portrait" src={professor.image} width="100" />
               </div>
             </li>
           )

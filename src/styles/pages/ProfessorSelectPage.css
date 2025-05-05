@@ -1,34 +1,97 @@
 .professor-select-page{
   background-color: #FEE6C6;
   height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding: 30px;
 }
+
+/*タイトル*/
 .professor-select-page h1{
   color: #664B4F;
 }
-.professor-card{
-  border-radius: 30px;
-  margin: 10px;
-  background-color: #DC9F95;
-  border: 5px solid #664B4F;
-  color: #FFF6EE;
-}
-.professor-card-contents{
-  display: flex;
-  padding: 10px 5px 10px;
-  justify-content: space-between;
-}
+
+/*紹介カード*/
 #professor-list{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50% 50%;
   flex-grow: 1;
+  flex-shrink: 1;
+  min-height: 0;
 }
-.professor-portrait{
-  border-radius: 20px;
+.professor-card-slot{
+  display: flex;
+  justify-content: space-around;
+}
+.professor-card{
+  margin: 20px;
+  border-radius: 30px;
+  background-color: #DC9F95;
   border: 5px solid #664B4F;
-  background-color: #FFF6EE;
+  color: #FFF6EE;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3 / 2;
 }
+.professor-card:hover{
+  /*background-color: #DC9F95;
+  border: 5px solid #FFF6EE;
+  color: #FFF6EE;*/
+  transform: scale(1.05);
+}
+.professor-card:active{
+  background-color: #DC9F95;
+  border: 5px solid #FFF6EE;
+  color: #FFF6EE;
+  transform: scale(0.95);
+}
+.professor-card.chosen{
+  background-color: #DC9F95;
+  border: 5px solid #FFF6EE;
+  color: #FFF6EE;
+  transform: scale(1.05);
+}
+
+.professor-card header{
+  height: 60px;
+}
+.professor-card header small{
+
+  background-color: #664B4F;
+  height: 60px;
+}
+.professor-card-contents::before{
+  display: block;
+}
+
+/*カードの内容*/
+.professor-card-contents{
+  flex-grow: 1;
+  display: flex;
+  padding: 0px 20px 40px;
+  justify-content: space-between;
+}
+.professor-card .professor-profile{
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 5px;
+}
+.professor-card .professor-portrait{
+  border-radius: 20px;
+  aspect-ratio: 3 / 4;
+  border: 5px solid #664B4F;
+  overflow: hidden;
+  flex-shrink: 0;
+  
+  background-color: #FFF6EE;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*次の場面に行くボタン*/
 .professor-select-page button{
   /*display: inline-block;*/
   border-radius: 8px;
