@@ -8,7 +8,9 @@ import professors from "../data/professor.js";
 import backgroundimage from "../assets/background/mid-story.svg";
 import TextBox from "../components/common/TextBox/TextBox";
 import TopLeftButtons from "../components/common/TopLeftButtons";
-import  Lovepointbar from "../components/common/lovepointbar.jsx";
+import Lovepointbar from "../components/common/Lovepointbar.jsx";
+
+
 
 
 function MidStoryPage() {
