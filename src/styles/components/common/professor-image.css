@@ -1,0 +1,6 @@
+/* professorImage.css */
+.professor {    
+    margin: 0 50% 0 20%; /* 上下左右のマージンを指定 */
+    object-fit: cover; /* 画像を枠にフィットさせる */
+    background-size: cover; /* 背景画像を枠にフィットさせる */
+}
