@@ -31,7 +31,13 @@ function ProfessorSelectPage() {
             <li key={professor.id} className="professor-card-slot">
               <div className={`professor-card ${professor.id == game.chosenProfessorId ? "chosen" : "fdsa"}`} onClick={() => selectProfessor(professor.id)}>
                 <header>
-                  <small>ほげほげ大学 The Foobar University of Quxatics</small>
+                  <div className="univ-logo"></div>
+                  <div className="professor-card-top-right">
+                    <div id="professor-card-top-right-line">
+                      <small>ほげほげ大学</small>
+                      <small>The Foobar University of Quxatics</small>
+                    </div>
+                  </div>
                 </header>
                 <div className="professor-card-contents">
                   <div className="professor-profile">
@@ -51,6 +57,7 @@ function ProfessorSelectPage() {
       {/* 次へ進むボタン（タイピングゲームへ） */}
       <div id="footer">
         <button onClick={() => navigate("/mid-story")}>決定して進む</button>
+        <p>教授のカードをクリックして選択してください。</p>
       </div>
 
       {/* 現在のゲーム状態を表示}

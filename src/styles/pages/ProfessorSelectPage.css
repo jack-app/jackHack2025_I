@@ -13,7 +13,6 @@
   color: #664B4F;
 }
 
-/*紹介カード*/
 #professor-list{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -26,6 +25,8 @@
   display: flex;
   justify-content: space-around;
 }
+
+/*紹介カード*/
 .professor-card{
   margin: 20px;
   border-radius: 30px;
@@ -35,12 +36,13 @@
   display: flex;
   flex-direction: column;
   aspect-ratio: 3 / 2;
+  transition: ease-out transform 0.2s;
 }
 .professor-card:hover{
   /*background-color: #DC9F95;
   border: 5px solid #FFF6EE;
   color: #FFF6EE;*/
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 .professor-card:active{
   background-color: #DC9F95;
@@ -49,29 +51,44 @@
   transform: scale(0.95);
 }
 .professor-card.chosen{
-  background-color: #DC9F95;
+  background-color: #e9b7b0;
   border: 5px solid #FFF6EE;
   color: #FFF6EE;
   transform: scale(1.05);
 }
 
 .professor-card header{
+  display: flex;
   height: 60px;
 }
-.professor-card header small{
-
+.professor-card header .univ-logo{
+  height: 60px;
+  width: 60px;
+  background: url(../../assets/ui/UnivLogo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.professor-card header .professor-card-top-right{
+  flex-grow: 1;
+  align-self: center;
+  border-top: 5px solid #664B4F;
+  padding-top: 10px;
+}
+#professor-card-top-right-line{
   background-color: #664B4F;
-  height: 60px;
-}
-.professor-card-contents::before{
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  padding: 1px 10px 1px;
 }
 
 /*カードの内容*/
 .professor-card-contents{
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-left: 5px solid #664B4F;
   flex-grow: 1;
   display: flex;
-  padding: 0px 20px 40px;
+  padding: 0 20px 0;
   justify-content: space-between;
 }
 .professor-card .professor-profile{
@@ -92,14 +109,14 @@
   background-position: center;
 }
 /*次の場面に行くボタン*/
+.professor-select-page #footer{
+  padding: 7px;
+}
 .professor-select-page button{
   /*display: inline-block;*/
   border-radius: 8px;
   background-color: #664B4F;
   color: #FFF6EE;
   padding: 7px;
-}
-.professor-select-page #footer{
-  padding: 7px;
-  direction: rtl;
+  float: right;
 }
