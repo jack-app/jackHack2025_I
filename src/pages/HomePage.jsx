@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/HomePage.css";
 import TopLeftButtons from "../components/common/TopLeftButtons"; // ← 追加
+import ShareButton from "../components/common/share-button";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <TopLeftButtons /> {/* ← ここで表示させます */}
-
+      <TopLeftButtons /> 
+      <ShareButton />
       <h1 className="title">教授との恋愛</h1>
 
       {/*<pre>{JSON.stringify(game, null, 2)}</pre>*/}
