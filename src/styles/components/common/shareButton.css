@@ -1,0 +1,48 @@
+/* .ShareButton{ */
+    /* display: flex;
+    justify-content: flex-end; */
+    /* position: absolute;*/
+    /* top:12px; */
+    /*left: 12px; */
+    /* width: 40px;
+    height: 40px; */
+ /* }  
+.copyToClipboard{  */
+    /* margin-right:0 ; 
+    margin-left:auto;  */
+    /* margin:0;
+    padding: 0; */
+   
+     /* position: absolute;*/
+    /* top:12px;  */
+   /* left: 54px; */
+    /* width: 40px;
+    height: 40px; */
+ /* }  */
+/* .shareButtonParent {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 12px;
+    right: 80px;
+  } */
+  .shareButtonParent {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: center; */
+    gap: 8px; /* ボタン間の余白 */
+  }
+  
+  .ShareButton,
+  .copyToClipboard,
+  .ShareButtonTwitter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}

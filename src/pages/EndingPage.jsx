@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/EndingPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
+import ShareButton from "../components/common/share-button";
+import TextBox from "../components/common/TextBox/TextBox";
+import Professor from "../components/common/ProfessorImage/Professor";
 
 // 画像のインポート
 import happyEnding from "../assets/background/happyEnding.svg";
@@ -17,6 +20,7 @@ function EndingPage() {
     // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
+  let pid = game.chosenProfessorId || 1;//選ばれていなければ雨日教授を出す(デバッグ用でもある)
 
   // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
   const professor = professors.find((p) => p.id === game.chosenProfessorId);
@@ -38,6 +42,15 @@ function EndingPage() {
     backgroundColor = "indianred"; // or brown
   }
 
+    let lp = game.professorLovepointMap[pid];
+    let ending;
+    if(lp < 30){
+      ending= professors[pid].endings.bad
+    }else if(lp<=80){
+      ending= professors[pid].endings.friend
+    }else{
+      ending= professors[pid].endings.lover
+    }
 
   return (
     <div
@@ -47,8 +60,9 @@ function EndingPage() {
       backgroundImage: `url(${endingImage})`
       }}
     >
-
-
+ <ShareButton />
+ <Professor professorId={pid}/>
+<TextBox scripts={ending} nextRoute={"/"}/>
       {/* タイトル画面に戻るボタン */}
       <button 
         style={{

@@ -40,7 +40,7 @@ function PuzzlePage() {
       <div>{professorNames}</div>
 
       {/* 次へ進むボタン（教授選択画面へ） */}
-      <button onClick={() => navigate("/professor-explain")}>教授説明へ</button>
+      <button onClick={() => navigate("/professor-select")}>教授選択へ</button>
     </div>
   );
 }
