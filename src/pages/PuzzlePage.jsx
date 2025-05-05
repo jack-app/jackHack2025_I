@@ -78,7 +78,7 @@ const PuzzlePage = () => {
       const touch = event.type === 'touchend' ? event.changedTouches[0] : event;
 
       if (isClick) {
-        rotateReverseActivePiece();
+        // rotateReverseActivePiece();
       } else {
         placeActivePiece(touch);
       }
@@ -101,13 +101,19 @@ const PuzzlePage = () => {
     const boardBounds = boardRef.current.getBoundingClientRect();
   const pieceBounds = activePiece.getBoundingClientRect();
 
-  const centerX = pieceBounds.left + pieceBounds.width / 2;
-  const centerY = pieceBounds.top + pieceBounds.height / 2;
+  // const centerX = pieceBounds.left + pieceBounds.width / 2;
+  // const centerY = pieceBounds.top + pieceBounds.height / 2;
 
-  const j = Math.floor((centerX - boardBounds.left) / cellSize);
-  const i = Math.floor((centerY - boardBounds.top) / cellSize);
+  // const j = Math.floor((centerX - boardBounds.left) / cellSize);
+  // const i = Math.floor((centerY - boardBounds.top) / cellSize);
 
-  console.log(`centerX: ${centerX}, centerY: ${centerY}`);
+  const mouseX = touch.pageX;
+  const mouseY = touch.pageY;
+
+  const j = Math.floor((mouseX - boardBounds.left) / cellSize);
+  const i = Math.floor((mouseY - boardBounds.top) / cellSize);
+
+  // console.log(`centerX: ${centerX}, centerY: ${centerY}`);
   console.log(`cellSize: ${cellSize}`);
   console.log(`i: ${i}, j: ${j}`);
 
