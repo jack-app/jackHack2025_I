@@ -1,9 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/pages/PuzzlePage.css'; // スタイルは別途調整してください
+import { useNavigate } from "react-router-dom";
+import { useGame } from "../contexts/GameContext";
+import TopLeftButtons from "../components/common/TopLeftButtons";
+import professors from '../data/professor.js';
+import professorImage1 from '../assets/professor/1.png'; 
+import professorImage2 from '../assets/professor/2.png';
+import professorImage3 from '../assets/professor/3.png';
+import professorImage4 from '../assets/professor/4.png';
 
 const PuzzlePage = () => {
   const cellSize = 60;
   const groundPieceSizeRatio = 0.4;
+  const navigate = useNavigate();
+  const game = useGame();
 
   const [activePiece, setActivePiece] = useState(null);
   const [dx, setDx] = useState(0);
@@ -15,11 +25,32 @@ const PuzzlePage = () => {
   );
   const [isAllRequiredFilled, setIsAllRequiredFilled] = useState(false);
   const days = ['月', '火', '水', '木', '金'];
-  const requiredCells = [
-    [1, 1], // 火曜2限
-    [2, 3], // 木曜3限
-    [4, 0], // 月曜5限
-  ];
+  const leftProfessors = professors.slice(0, 2);
+  const rightProfessors = professors.slice(2, 4);
+
+  const getRandomRequiredCells = () => {
+    const cells = new Set();
+    while (cells.size < 4) {
+      const i = Math.floor(Math.random() * 5); // 0~4
+      const j = Math.floor(Math.random() * 5);
+      cells.add(`${i},${j}`);
+    }
+    const result = Array.from(cells).map(str => {
+      const [i, j] = str.split(',').map(Number);
+      return [i, j];
+    });
+  
+    console.log("Generated requiredCells:", result); // 確認用
+    return result;
+  };
+  const [requiredCells] = useState(getRandomRequiredCells());
+
+  const pieceProfessorMap = {
+    piece1: 1, piece2: 1, piece3: 1,
+    piece4: 2, piece5: 2, piece6: 2,
+    piece7: 3, piece8: 3, piece9: 3,
+    piece10: 4, piece11: 4, piece12: 4
+  };
 
   const pieceStructures = {
     piece1: { // Z
@@ -215,9 +246,6 @@ const PuzzlePage = () => {
 
   // === 1. gridMap からピースを全消去 ===
   const cleanedGrid = removePieceFromGrid(pieceId, gridMap);
-  setGridMap(cleanedGrid);
-  console.log(`updatedGrid: ${JSON.stringify(cleanedGrid )}`);
-
 
   if (i >= 0 && i < 5 && j >= 0 && j < 5) {
     // ピースが枠外や重なっていないかチェック
@@ -233,7 +261,7 @@ const PuzzlePage = () => {
           // 枠外チェック
           if (ni < 0 || ni >= 5 || nj < 0 || nj >= 5) return false;
           // 重なりチェック
-          if (gridMap[ni][nj] !== null) {
+          if (cleanedGrid[ni][nj] !== null) {
             console.log(`重なりチェック: gridMap[${ni}][${nj}] = ${gridMap[ni][nj]}`);
             return false
           };
@@ -249,7 +277,7 @@ const PuzzlePage = () => {
       const y = null;
       
       // gridMapを更新
-      const updatedGrid = gridMap.map(row => [...row]);
+      const updatedGrid = cleanedGrid.map(row => [...row]);
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const idx = r * cols + c;
@@ -374,6 +402,80 @@ const PuzzlePage = () => {
     });
   };
 
+  const calculateSelectedProfessors = () => {
+    // 1. 教授ごとのピース使用数をカウント
+    const pieceUsageCount = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  
+    for (let row of gridMap) {
+      for (let cell of row) {
+        if (cell) {
+          const profId = pieceProfessorMap[cell];
+          if (profId) pieceUsageCount[profId]++;
+        }
+      }
+    }
+  
+    // 2. 最も多く使われた教授IDを抽出（同率含む）
+    const maxCount = Math.max(...Object.values(pieceUsageCount));
+    const mostUsed = Object.entries(pieceUsageCount)
+      .filter(([_, count]) => count === maxCount)
+      .map(([id]) => parseInt(id));
+  
+    // 3. Contextにセット
+    if (game?.setSelectedProfessors) {
+      game.setSelectedProfessors(mostUsed);
+    } else {
+      game.selectedProfessors = mostUsed;
+    }
+  
+    console.log("選ばれた教授:", mostUsed);
+  };
+
+  const getProfessorColor = (index) => {
+    const colors = ['#66c3a6', '#fd8e62', '#8ea1cc', '#e88bc4'];
+    return colors[index % colors.length];
+  };
+
+  const ProfessorIcon = ({ prof, color, top, left }) => {
+    
+    const getImagePath = (id) => {
+      try {
+        return new URL(`../assets/professor/${id}.png`, import.meta.url).href;
+      } catch (error) {
+        console.error("画像の読み込みに失敗しました:", error);
+        return ""; 
+      }
+    };
+    
+    return (
+    <div
+      className="professor-icon-wrapper"
+      style={{
+        top: `${15 + 20 * top}vh`,
+        left: `${left}px`,
+      }}
+    >
+      <div
+        className="professor-circle"
+        style={{
+          backgroundColor: color,
+        }}
+      >
+        <img
+          className="professor-image"
+          src={getImagePath(prof.id)}
+          alt={prof.name}
+        />
+      </div>
+      <div
+        className="professor-name"
+        style={{ color: color, }}
+      >
+        {prof.name}
+      </div>
+    </div>
+  )};
+  
   useEffect(() => {
     resetPuzzlePiece();
   }, []);
@@ -381,10 +483,13 @@ const PuzzlePage = () => {
 
   useEffect(() => {
     const allFilled = requiredCells.every(
-      ([i, j]) => gridMap[i][j] !== null
+      ([i, j]) => gridMap[i] && gridMap[i][j] !== null
     );
     setIsAllRequiredFilled(allFilled);
-  }, [gridMap]);
+    if (allFilled) {
+
+    }
+  }, [gridMap,requiredCells]);
 
   
   useEffect(() => {
@@ -403,32 +508,30 @@ const PuzzlePage = () => {
   
   return (
     <div className="puzzle-page">
+      <TopLeftButtons />
+      <h2 className="puzzle-title">履修登録</h2>
+      {professors.slice(0, 4).map((prof, i) => (
+          <ProfessorIcon key={prof.id} prof={prof} color={getProfessorColor(i)} top={i} left={40} />
+        ))}
       <div className="board-wrapper">
         <div id="board" ref={boardRef} className="board">
           {renderBoardCells()}
           {renderPuzzlePieces()}
         </div>
-      </div>
 
+      </div>
       <button
   onClick={() => {
     if (isAllRequiredFilled) {
-      // ページ遷移処理など（例：useNavigateを使ってページ遷移）
+      calculateSelectedProfessors(); 
+      navigate('/professor-select'); // 遷移先のページを指定
       console.log("遷移します！");
     }
   }}
   disabled={!isAllRequiredFilled}
-  style={{
-    backgroundColor: isAllRequiredFilled ? '#8AA99B' : '#ccc',
-    color: isAllRequiredFilled ? 'white' : '#888',
-    cursor: isAllRequiredFilled ? 'pointer' : 'not-allowed',
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '6px',
-    marginTop: '20px'
-  }}
+  className={`register-button ${isAllRequiredFilled ? 'enabled' : 'disabled'}`}
 >
-  次へ進む
+  履修登録完了
 </button>
     </div>
   );
