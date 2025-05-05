@@ -11,9 +11,14 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.2",
+    "@mui/material": "^7.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.3",
+    "react-share": "^5.2.2",
     "react-timer-hook": "^4.0.5"
   },
   "devDependencies": {

@@ -6,14 +6,16 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/HomePage.css";
 import TopLeftButtons from "../components/common/TopLeftButtons"; // ← 追加
 
+
+
 function HomePage() {
   const navigate = useNavigate();
   const game = useGame();
 
   return (
     <div className="home-page">
-      <TopLeftButtons /> {/* ← ここで表示させます */}
-
+      <TopLeftButtons /> 
+     
       <h1 className="title">教授との恋愛</h1>
 
       {/*<pre>{JSON.stringify(game, null, 2)}</pre>*/}
