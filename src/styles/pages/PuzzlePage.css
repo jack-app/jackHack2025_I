@@ -66,22 +66,23 @@
   pointer-events: none;
 }
 
+
+
 .puzzle-piece#piece1,
 .puzzle-piece#piece2,
-.puzzle-piece#piece3 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
+.puzzle-piece#piece3,
 .puzzle-piece#piece4,
-.puzzle-piece#piece5 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
+.puzzle-piece#piece5,
 .puzzle-piece#piece6,
 .puzzle-piece#piece7,
-.puzzle-piece#piece8 {
+.puzzle-piece#piece8,
+.puzzle-piece#piece9,
+.puzzle-piece#piece10,
+.puzzle-piece#piece11,
+.puzzle-piece#piece12 {
   grid-template-columns: repeat(3, 1fr);
 }
+
 
 .puzzle-cell {
   width: var(--cell-size);
@@ -122,6 +123,24 @@
 #piece8 .puzzle-cell {
   background-color: #b4b4b4;
 }
+
+#piece9 .puzzle-cell {
+  background-color: #b4b4b4;
+}
+
+
+#piece10 .puzzle-cell {
+  background-color: #b4b4b4;
+}
+
+
+#piece11 .puzzle-cell {
+  background-color: #b4b4b4;
+}
+#piece12 .puzzle-cell {
+  background-color: #b4b4b4;
+}
+
 
 .puzzle-cell.null {
   visibility: hidden !important;

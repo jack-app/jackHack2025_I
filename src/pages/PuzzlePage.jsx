@@ -18,12 +18,31 @@ const PuzzlePage = () => {
 
   const resetPuzzlePiece = () => {
     const puzzlePieces = document.querySelectorAll('.puzzle-piece');
-    puzzlePieces.forEach(piece => {
-      piece.style.left = '';
-      piece.style.top = '';
+    puzzlePieces.forEach((piece, index)  => {
+      // 初期位置：グリッドの下、i=5（6行目）、j=0~N
+    const piecesPerRow = 4; // 1段に置く個数
+    const i = 5 + Math.floor(index / piecesPerRow); 
+    const j = (index % 4);
+
+    const left = (j -1 ) * (cellSize*1.5);
+    const top = i * cellSize;
+
+    piece.style.left = `${left}px`;
+    piece.style.top = `${top}px`;
+      // piece.style.left = '';
+      // piece.style.top = '';
       piece.setAttribute('data-scale', groundPieceSizeRatio);
       piece.setAttribute('data-state', 0);
       piece.setAttribute('data-pos', 0);
+
+      // 初期位置を保存（再配置に使う）
+    piece.setAttribute('data-init-left', left);
+    piece.setAttribute('data-init-top', top);
+
+    piece.setAttribute('data-scale', groundPieceSizeRatio);
+    piece.setAttribute('data-state', 0);
+    piece.setAttribute('data-pos', 0);
+
       setStyle(piece);
     });
   };
@@ -123,9 +142,13 @@ const PuzzlePage = () => {
       console.log(`cellSize: ${cellSize}`);
       element.setAttribute('data-scale', 1);
     } else {
-      element.style.left = '';
-      element.style.top = '';
-      element.setAttribute('data-scale', groundPieceSizeRatio);
+      // 初期位置に戻す
+    const initLeft = element.getAttribute('data-init-left');
+    const initTop = element.getAttribute('data-init-top');
+
+    element.style.left = `${initLeft}px`;
+    element.style.top = `${initTop}px`;
+    element.setAttribute('data-scale', groundPieceSizeRatio);
     }
 
     element.setAttribute('data-pos', pos);
@@ -158,10 +181,18 @@ const PuzzlePage = () => {
 
   const renderPuzzlePieces = () => {
     const pieceStructures = {
-      piece1: { cols: 2, rows: 2, nullCells: [] },
-      piece2: { cols: 2, rows: 2, nullCells: [] },
-      piece3: { cols: 3, rows: 1, nullCells: [] },
-      piece4: { cols: 1, rows: 3, nullCells: [] }
+      piece1: { cols: 1, rows: 6, nullCells: [0,5] },
+      piece2: { cols: 1, rows: 6, nullCells: [3,4] },
+      piece3: { cols: 1, rows: 6, nullCells: [2,3] },
+      piece4: { cols: 1, rows: 5, nullCells: [3] },
+      piece5: { cols: 1, rows: 6, nullCells: [2,3] },
+      piece6: { cols: 1, rows: 6, nullCells: [0,1] },
+      piece7: { cols: 1, rows: 6, nullCells: [2,5]  },
+      piece8: { cols: 1, rows: 6, nullCells: [2,3] },
+      piece9: {  cols: 1, rows: 6, nullCells: [0,2] },
+      piece10: {cols: 1, rows: 6, nullCells: [2,5]  },
+      piece11: {cols: 1, rows: 6, nullCells: [1,2]  },
+      piece12: { cols: 1, rows: 4, nullCells: [] },
     };
 
     return Object.entries(pieceStructures).map(([pieceId, structure]) => {
@@ -205,9 +236,9 @@ const PuzzlePage = () => {
         </div>
       </div>
 
-      <div className="ground">
-        {/* {renderPuzzlePieces()} */}
-      </div>
+      {/* <div className="ground">
+        {renderPuzzlePieces()}
+      </div> */}
 
       <button onClick={resetPuzzlePiece}>Reset Puzzle</button>
     </div>
