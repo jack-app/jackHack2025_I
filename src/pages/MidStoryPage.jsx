@@ -8,6 +8,8 @@ import professors from "../data/professor.js";
 import backgroundimage from "../assets/background/mid-story.svg";
 import TextBox from "../components/common/TextBox/TextBox";
 import TopLeftButtons from "../components/common/TopLeftButtons";
+import  Lovepointbar from "../components/common/lovepointbar.jsx";
+
 
 function MidStoryPage() {
     // javaScriptが書ける↓
@@ -25,7 +27,8 @@ function MidStoryPage() {
         backgroundSize: "cover", 
       }}
       >
-         <TopLeftButtons />
+          <TopLeftButtons />
+         < Lovepointbar />
       <h1>MidStoryPage Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
