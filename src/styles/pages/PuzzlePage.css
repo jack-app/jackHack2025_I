@@ -1,3 +1,19 @@
 .puzzle-page h1 {
   color: #ae00ff;
 }
+.puzzle-page {
+  padding: 20px;
+}
+
+.puzzle-area {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+.puzzle-board-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

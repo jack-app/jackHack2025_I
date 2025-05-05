@@ -5,7 +5,22 @@ const professors = [
     latinScriptName: "AMABI Aloha",
     personality: "おおらかで天気と気分に左右される自由人",
     image: "src/assets/professor/test.png",
-    pieces: [],
+    pieces: [ [
+      [0, 0, 0, 0],
+      [1, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ],[
+      [0, 0, 0, 0],
+      [0, 0, 1, 1],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ],[
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+    ]],
     endings: {
       friend: [
         ["アロハ先生", "ま、無理せずいこうぜ〜。友達みたいなもんだろ？"],
@@ -94,7 +109,24 @@ const professors = [
     latinScriptName: "KAGIYAMA Shinobu",
     personality: "冷静沈着なスパルタ型、努力を重視する完璧主義者",
     image: "src/assets/professor/test.png",
-    pieces: [],
+    pieces: [ [
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ], [
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ], [
+      [0, 0, 1, 0],
+      [0, 0, 1, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ]
+
+  ],
     endings: {
       friend: [
         ["鍵山先生", "努力を怠らないお前なら、今後も信頼できるな。"],
@@ -191,7 +223,25 @@ const professors = [
     latinScriptName: "HAYASUGI Shun",
     personality: "超天才型、全てを一瞬で見抜く冷静な理論派",
     image: "src/assets/professor/test.png",
-    pieces: [],
+    pieces: [ [
+      [0, 0, 0, 0],
+      [1, 1, 1, 0],
+      [0, 1, 0, 0],
+      [0, 0, 0, 0],
+    ],
+    [
+      [0, 0, 0, 0],
+      [0, 1, 1, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ],
+    [
+      [0, 1, 0, 0],
+      [0, 1, 0, 0],
+      [0, 1, 1, 0],
+      [0, 0, 0, 0],
+    ]
+  ],
     endings: {
       friend: [
         ["速杉先生", "君の成長速度、悪くない。これからも期待している。"],
@@ -287,7 +337,26 @@ const professors = [
     latinScriptName: "SHUSSEKI Toru",
     personality: "一見優しいが、油断すると一気に追い込んでくる飄々型",
     image: "src/assets/professor/test.png",
-    pieces: [],
+    pieces: [
+      [
+        [0, 0, 0, 0],
+        [1, 1, 0, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0],
+      ],
+      [
+        [0, 0, 0, 0],
+        [0, 1, 1, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0],
+      ],
+      [
+        [0, 1, 0, 0],
+        [0, 1, 0, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0],
+      ]
+    ],
     endings: {
       friend: [
         ["出席先生", "君とは、いい距離感で付き合えそうだね。"],
