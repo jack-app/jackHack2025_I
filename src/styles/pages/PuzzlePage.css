@@ -1,7 +1,7 @@
 /* src/styles/pages/PuzzlePage.css */
 :root {
-  --board-size: 280px;
-  --cell-size: 40px;
+  --board-size: 300px;
+  --cell-size: 60px;
   --board-color: #666;
 }
 
@@ -21,7 +21,7 @@
   height: var(--board-size);
   border: 1px solid var(--board-color);
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0;
 }
 

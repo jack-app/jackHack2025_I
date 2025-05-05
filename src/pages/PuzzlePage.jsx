@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/pages/PuzzlePage.css'; // スタイルは別途調整してください
 
 const PuzzlePage = () => {
-  const cellSize = 40;
+  const cellSize = 60;
   const groundPieceSizeRatio = 0.4;
 
   const [activePiece, setActivePiece] = useState(null);
@@ -104,7 +104,6 @@ const PuzzlePage = () => {
 
   const setPosition = (element, pos) => {
     const bounds = boardRef.current.getBoundingClientRect();
-    const state = parseInt(element.getAttribute('data-state') || '0');
 
     if (pos > 0) {
       const i = Math.floor((pos - 1) / 5);
