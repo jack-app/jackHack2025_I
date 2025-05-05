@@ -11,7 +11,8 @@ import "../styles/pages/TypingGamePage.css"; // CSSスタイルをインポー�
 import professors from "../data/professor.js";
 import difficulty from "../data/difficulty.js";
 import { useState } from "react";
-
+import backgroundimage from "../assets/background/typinggame.svg";
+import TopLeftButtons from "../components/common/TopLeftButtons"; // ← 追加
 
 function useTimer(initialTime = 20) {
   const navigate = useNavigate();
@@ -153,8 +154,15 @@ function TypingGamePage() {
    },[])
 
   return (
-    <>
-    <div className="typing-game-page" onKeyDown={handleKeyDown}>
+    <div style={{
+      backgroundImage: `url(${backgroundimage})`,
+      height: "100vh", 
+      backgroundSize: "cover",
+    }}>
+      <TopLeftButtons /> {/* ← ここで表示させます */}
+
+    <div className="typing-game-page" onKeyDown={handleKeyDown}
+    >
       <h1>Typing Game Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
@@ -166,7 +174,7 @@ function TypingGamePage() {
       <div>
 {/* ボタン1 */}
       {clickedButton === null || clickedButton === 1 ? (
-        <button onClick={() => handleClick(1,professor.typingTexts[j][0][1])}>
+        <button className="problem" onClick={() => handleClick(1,professor.typingTexts[j][0][1])}>
           <div>{professor.typingTexts[j][0][0]}</div>
           <div>{professor.typingTexts[j][0][1]}</div>
         </button>
@@ -175,7 +183,7 @@ function TypingGamePage() {
 
       {/* ボタン2 */}
       {clickedButton === null || clickedButton === 2 ? (
-        <button onClick={() => handleClick(2,professor.typingTexts[j][1][1])}>
+        <button  className="problem" onClick={() => handleClick(2,professor.typingTexts[j][1][1])}>
           <div>{professor.typingTexts[j][1][0]}</div>
           <div>{professor.typingTexts[j][1][1]}</div>
         </button>
@@ -184,7 +192,7 @@ function TypingGamePage() {
 
  {/* ボタン3 */}
       {clickedButton === null || clickedButton === 3 ? (
-        <button onClick={() => handleClick(3,professor.typingTexts[j][2][1])}>
+        <button className="problem" onClick={() => handleClick(3,professor.typingTexts[j][2][1])}>
          <div>{professor.typingTexts[j][2][0]}</div>
          <div>{professor.typingTexts[j][2][1]}</div>
         </button>
@@ -192,8 +200,8 @@ function TypingGamePage() {
     </div>
 
       <br/>
-      <input type="text" placeholder="タイピングしてください" 
-         />
+      
+         
 
     <div>
       {targetText.split('').map((char, i) => {
@@ -230,7 +238,7 @@ function TypingGamePage() {
       <div>
       {!j==0 &&  (<div className="tokutenpop">Bonus {professor.typingTexts[j][i][2]} points</div> )}</div>
     
-    </>
+    </div>
   );
 }
 
