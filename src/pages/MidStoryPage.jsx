@@ -37,7 +37,7 @@ function MidStoryPage() {
       )}
 
       
-      <TextBox texts={texts} nextRoute={"/typing"} name={"北英輔"}/>
+      <TextBox scripts={professors[0].endings.bad} nextRoute={"/typing"} />
 
       {/* 難易度情報 */}
 
