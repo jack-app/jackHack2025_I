@@ -4,6 +4,7 @@ import React from 'react';
 export default function PieceComponent({
   piece,
   cellSize,
+  position,
   boardRef,
   onDragStart,
   onDragEnd,
@@ -26,8 +27,8 @@ export default function PieceComponent({
       onDragEnd={onDragEnd}
       style={{
         position: 'absolute',
-        top: `${top}px`,
-        left: `${left}px`,
+        top: `${position?.top ?? top}px`,
+        left: `${position?.left ??left}px`,
         transform: `scale(${piece.scale})`,
         zIndex: piece.pos ? 1 : 100,
         transition: 'top 0.2s, left 0.2s, transform 0.1s',

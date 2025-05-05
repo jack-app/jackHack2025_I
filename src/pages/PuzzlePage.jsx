@@ -63,6 +63,7 @@ function PuzzlePage() {
   
   const boardRef = useRef();
   const [draggingPieceId, setDraggingPieceId] = useState(null);
+  const [draggingPos, setDraggingPos] = useState(null);
 
   const handleDrop = (mouseX, mouseY, piece) => {
     const pos = convertPixelToGrid(mouseX, mouseY, boardRef, cellSize);
@@ -85,9 +86,36 @@ function PuzzlePage() {
     );
   };
 
-  const handleDragEnd = (e, piece) => {
-    handleDrop(e.clientX, e.clientY, piece);
-    setDraggingPieceId(null);
+  const handleDragEnd = () => {
+    const piece = pieces.find(p => p.id === draggingPieceId);
+  if (!piece || !draggingPos) return;
+
+  const pos = convertPixelToGrid(draggingPos.x, draggingPos.y, boardRef, cellSize);
+
+  if (canPlacePiece(grid, piece, pos)) {
+    const cleared = clearPieceFromGrid(grid, piece);
+    const updated = placePiece(cleared, piece, pos);
+    setGrid(updated);
+    setPieces(prev =>
+      prev.map(p =>
+        p.id === piece.id
+          ? { ...p, pos, scale: 1 }
+          : p
+      )
+    );
+  } else {
+    // 初期位置に戻す（pos=null）
+    setPieces(prev =>
+      prev.map(p =>
+        p.id === piece.id
+          ? { ...p, pos: null, scale: 0.6 }
+          : p
+      )
+    );
+  }
+
+  setDraggingPieceId(null);
+  setDraggingPos(null);
   };
 
   // 2. 初期描画後、初期位置を設定する
@@ -103,6 +131,19 @@ useEffect(() => {
     }))
   );
 }, []);
+
+// dragしているピースの座標を更新する
+useEffect(() => {
+  const handleMouseMove = (e) => {
+    if (draggingPieceId !== null) {
+      console.log("draggingPieceId", draggingPieceId);
+      setDraggingPos({ x: e.clientX, y: e.clientY });
+    }
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, [draggingPieceId]);
 
   return (
     <div className="puzzle-page">
@@ -121,12 +162,28 @@ useEffect(() => {
             cellSize={cellSize}
             boardRef={boardRef}
             onDragStart={() => handleDragStart(piece.id)}
-            onDragEnd={(e) => handleDragEnd(e, piece)}
+            onDragEnd={(e) => handleDragEnd()}
           />
         ))}
+
+        {draggingPieceId && (() => {
+          const piece = pieces.find(p => p.id === draggingPieceId);
+          if (!piece || !draggingPos) return null;
+        
+          return (
+            <PieceComponent
+              piece={piece}
+              cellSize={cellSize}
+              position={{ top: draggingPos.y - 20, left: draggingPos.x - 20 }}
+              scale={1.2}
+              onDragEnd={handleDragEnd}
+            />
+          );
+        })()}
+
       </div>
       
-      <PuzzleGridCheck />
+      {/* <PuzzleGridCheck /> */}
 
       {/* 現在のゲーム状態を表示 */}
       {/* <pre>{JSON.stringify(game, null, 2)}</pre> */}
