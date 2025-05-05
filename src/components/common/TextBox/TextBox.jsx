@@ -5,6 +5,8 @@ import TextArea from './TextArea/TextArea.jsx';
 import "../../../styles/components/common/TextBox/TextBox.css"; // CSSスタイルをインポート(cssが適用されるようになる)"
 
 const TextBox = ({scripts,nextRoute}) => {
+    console.log(scripts)
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const navigate = useNavigate();
 
