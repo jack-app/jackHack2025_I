@@ -9,6 +9,7 @@ import "../styles/pages/EndingPage.css"; // CSSスタイルをインポート(cs
 import professors from "../data/professor.js";
 import ShareButton from "../components/common/share-button";
 import TextBox from "../components/common/TextBox/TextBox";
+import Professor from "../components/common/ProfessorImage/Professor";
 
 // 画像のインポート
 import happyEnding from "../assets/background/happyEnding.svg";
@@ -60,6 +61,7 @@ function EndingPage() {
       }}
     >
  <ShareButton />
+ <Professor professorId={pid}/>
 <TextBox scripts={ending} nextRoute={"/"}/>
       {/* タイトル画面に戻るボタン */}
       <button 
