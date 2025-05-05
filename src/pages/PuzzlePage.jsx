@@ -232,6 +232,12 @@ const PuzzlePage = () => {
     };
   };
 
+  const removePieceFromGrid = (pieceId, gridMap) => {
+    return gridMap.map(row =>
+      row.map(cell => (cell === pieceId ? null : cell))
+    );
+  };
+
   const placeActivePiece = (touch) => {
     const boardBounds = boardRef.current.getBoundingClientRect();
 
@@ -310,12 +316,10 @@ const PuzzlePage = () => {
 
   const setPosition = (element, i,j,is_setting) => {
     const bounds = boardRef.current.getBoundingClientRect();
-    // const pieceId = element.id;
-    // const { cols, nullCells } = pieceStructures[pieceId];
+    const pieceId = element.id;
 
     if (is_setting) {
     //  // 掴んだセルのオフセットを考慮
-    const { r: offsetR, c: offsetC } = grabOffset;
     const targetTop = i * cellSize;
     const targetLeft = j * cellSize;
     console.log(`targetTop: ${targetTop}, targetLeft: ${targetLeft}`);
@@ -333,6 +337,11 @@ const PuzzlePage = () => {
     element.style.left = `${initLeft}px`;
     element.style.top = `${initTop}px`;
     element.setAttribute('data-scale', groundPieceSizeRatio);
+
+    // === 1. gridMap からピースを全消去 ===
+    const cleanedGrid = removePieceFromGrid(pieceId, gridMap);
+    setGridMap(cleanedGrid);
+    console.log(`updatedGrid: ${JSON.stringify(cleanedGrid )}`);
     }
 
     // element.setAttribute('data-pos', pos);
