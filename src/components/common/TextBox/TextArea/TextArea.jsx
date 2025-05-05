@@ -15,8 +15,7 @@ const TextArea = ({ texts, nextRoute }) => {
     };
 
     return (
-        <div className="text-area-container" onClick={handleClick}
-        style={{ cursor: 'pointer', padding: '20px', fontSize: '18px' }}>
+        <div className="text-area-container" onClick={handleClick}>
             <div className="text-area">
                 {texts[currentIndex]}
                 {currentIndex === texts.length - 1 && (
