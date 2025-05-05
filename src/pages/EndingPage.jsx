@@ -8,6 +8,11 @@ import { useGame } from "../contexts/GameContext";
 import "../styles/pages/EndingPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
 
+// 画像のインポート
+import happyEnding from "../assets/background/happyEnding.svg";
+import friendEnding from "../assets/background/friendEnding.svg";
+import badEnding from "../assets/background/badEnding.svg";
+
 function EndingPage() {
     // javaScriptが書ける↓
   const navigate = useNavigate();
@@ -16,25 +21,44 @@ function EndingPage() {
   // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
   const professor = professors.find((p) => p.id === game.chosenProfessorId);
 
+  // タイピング結果によるエンディングの表示
+  game.score = 50; // 暫定的にスコアを指定
+
+  // ゲームの成績に応じてエンディング画面を分岐
+  let endingImage;
+  let backgroundColor;
+  if (game.score >= 80) {
+    endingImage = happyEnding;
+    backgroundColor = "blanchedalmond"; // or antiquewhite
+  } else if (game.score >= 50) {
+    endingImage = friendEnding;
+    backgroundColor = "bisque"; // or palegoldenrod
+  } else {
+    endingImage = badEnding;
+    backgroundColor = "indianred"; // or brown
+  }
+
+
   return (
-    <div className="ending-page">
-      <h1>Ending Page</h1>
+    <div
+      className="ending-page"
+      style={{
+      backgroundColor: backgroundColor,
+      backgroundImage: `url(${endingImage})`
+      }}
+    >
 
-      {/* 現在のゲーム状態を表示 */}
-      <pre>{JSON.stringify(game, null, 2)}</pre>
-      
-      {/* 選ばれた教授情報 */}
-      {professor && (
-        <div className="professor-info">
-          <h2>{professor.name}とのエンディング</h2>
-          <p>{professor.explanation}</p>
-        </div>
-      )}
-
-      {/* タイピング結果によるエンディングの表示 */}
 
       {/* タイトル画面に戻るボタン */}
-      <button onClick={() => navigate("/")}>タイトルに戻る</button>
+      <button 
+        style={{
+          marginTop: "100px", // ボタンの余白
+          position: "relative"
+        }}
+        onClick={() => navigate("/")}
+      >
+        タイトルに戻る
+      </button>
     </div>
   );
 }

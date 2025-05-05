@@ -34,3 +34,11 @@ button {
   border: none;
   cursor: pointer;
 }
+
+/* html/body/ルート要素の余白を消す */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
