@@ -118,7 +118,6 @@ src/
 │   ├── PuzzlePage.jsx
 │   ├── TypingGamePage.jsx
 │   ├── ProfessorSelectPage.jsx
-│   ├── ProfessorExplainPage.jsx
 │   ├── MidStoryPage.jsx
 │   ├── DifficultySelectPage.jsx
 │   └── EndingPage.jsx
@@ -141,7 +140,6 @@ src/
 │       ├── PuzzlePage.css
 │       ├── TypingGamePage.css
 │       ├── ProfessorSelectPage.css
-│       ├── ProfessorExplainPage.css
 │       ├── MidStoryPage.css
 │       ├── DifficultySelectPage.css
 │       └── EndingPage.css

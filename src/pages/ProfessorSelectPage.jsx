@@ -23,17 +23,45 @@ function ProfessorSelectPage() {
 
   return (
     <div className="professor-select-page">
-      <h1>Professor Select Page</h1>
+      <h1>教授紹介・選択</h1>
 
-      {/* 現在のゲーム状態を表示 */}
-      <pre>{JSON.stringify(game, null, 2)}</pre>
-      <button onClick={() => selectProfessor(1)}>id : 1をsetする</button>
+      <ul id="professor-list">{/*各教授の紹介*/
+        professors.map(professor => {
+          return (
+            <li key={professor.id} className="professor-card-slot">
+              <div className={`professor-card ${professor.id == game.chosenProfessorId ? "chosen" : "fdsa"}`} onClick={() => selectProfessor(professor.id)}>
+                <header>
+                  <div className="univ-logo"></div>
+                  <div className="professor-card-top-right">
+                    <div id="professor-card-top-right-line">
+                      <small>ほげほげ大学</small>
+                      <small>The Foobar University of Quxatics</small>
+                    </div>
+                  </div>
+                </header>
+                <div className="professor-card-contents">
+                  <div className="professor-profile">
+                    <h2>{professor.name}</h2>
+                    <small>{professor.latinScriptName}</small>
+                    <p>{professor.personality}</p>
+                  </div>
+                  <div className="professor-portrait" style={{"background-image": `url(${professor.image})` }}>
+                  </div>
+                </div>
+              </div>
+            </li>
+          )
+        })
+      }</ul>
 
-      {/* 教授の名前一覧 */}
-      <div>{professorNames}</div>
-      
       {/* 次へ進むボタン（タイピングゲームへ） */}
-      <button onClick={() => navigate("/mid-story")}>中間ストーリーへ</button>
+      <div id="footer">
+        <button onClick={() => navigate("/mid-story")}>決定して進む</button>
+        <p>教授のカードをクリックして選択してください。</p>
+      </div>
+
+      {/* 現在のゲーム状態を表示}
+      <pre>{JSON.stringify(game, null, 2)}</pre>{*/}
     </div>
   );
 }
