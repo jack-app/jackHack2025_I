@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/PuzzlePage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
+import PuzzleGridCheck from "../components/common/PuzzleGridCheck.jsx";
 
 function PuzzlePage() {
     // javaScriptが書ける↓
@@ -26,6 +27,7 @@ function PuzzlePage() {
   return (
     <div className="puzzle-page">
       <h1>Puzzle Page</h1>
+      <PuzzleGridCheck></PuzzleGridCheck>
 
       {/* 現在のゲーム状態を表示 */}
       <pre>{JSON.stringify(game, null, 2)}</pre>
