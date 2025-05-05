@@ -117,8 +117,8 @@ const PuzzlePage = () => {
       console.log(`bounds: ${JSON.stringify(bounds)}`);
       console.log(`bounds.left: ${bounds.left}, bounds.top: ${bounds.top}`);
       
-      element.style.left = `${j * cellSize}px`;
-      element.style.top = `${i * cellSize}px`;
+      element.style.left = `${j * cellSize - 1}px`;
+      element.style.top = `${i * cellSize - 1}px`;
       console.log(`element.style.left: ${element.style.left}, element.style.top: ${element.style.top}`);
       console.log(`cellSize: ${cellSize}`);
       element.setAttribute('data-scale', 1);
