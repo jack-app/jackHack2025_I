@@ -79,20 +79,25 @@ const PuzzlePage = () => {
   };
 
   const placeActivePiece = (touch) => {
-    const bounds = boardRef.current.getBoundingClientRect();
-    let pos = 0;
+    const boardBounds = boardRef.current.getBoundingClientRect();
+  const pieceBounds = activePiece.getBoundingClientRect();
 
-    if (bounds.left < touch.pageX &&
-        bounds.right > touch.pageX &&
-        bounds.top < touch.pageY &&
-        bounds.bottom > touch.pageY) {
+  const centerX = pieceBounds.left + pieceBounds.width / 2;
+  const centerY = pieceBounds.top + pieceBounds.height / 2;
 
-      const j = Math.floor((touch.pageX - dx - bounds.left + cellSize / 2) / cellSize);
-      const i = Math.floor((touch.pageY - dy - bounds.top + cellSize / 2) / cellSize);
-      pos = i * 5 + j + 1; // 5列に対応
-    }
+  const j = Math.floor((centerX - boardBounds.left) / cellSize);
+  const i = Math.floor((centerY - boardBounds.top) / cellSize);
 
-    setPosition(activePiece, pos);
+  console.log(`centerX: ${centerX}, centerY: ${centerY}`);
+  console.log(`cellSize: ${cellSize}`);
+  console.log(`i: ${i}, j: ${j}`);
+
+  let pos = 0;
+  if (i >= 0 && i < 5 && j >= 0 && j < 5) {
+    pos = i * 5 + j + 1;
+  }
+
+  setPosition(activePiece, pos);
   };
 
   const setStyle = (element) => {
@@ -108,8 +113,14 @@ const PuzzlePage = () => {
     if (pos > 0) {
       const i = Math.floor((pos - 1) / 5);
       const j = (pos - 1) % 5;
-      element.style.left = `${j * cellSize + bounds.left + 1}px`;
-      element.style.top = `${i * cellSize + bounds.top + 1}px`;
+      console.log(`i: ${i}, j: ${j}`);
+      console.log(`bounds: ${JSON.stringify(bounds)}`);
+      console.log(`bounds.left: ${bounds.left}, bounds.top: ${bounds.top}`);
+      
+      element.style.left = `${j * cellSize}px`;
+      element.style.top = `${i * cellSize}px`;
+      console.log(`element.style.left: ${element.style.left}, element.style.top: ${element.style.top}`);
+      console.log(`cellSize: ${cellSize}`);
       element.setAttribute('data-scale', 1);
     } else {
       element.style.left = '';
@@ -190,11 +201,12 @@ const PuzzlePage = () => {
       <div className="board-wrapper">
         <div id="board" ref={boardRef} className="board">
           {renderBoardCells()}
+          {renderPuzzlePieces()}
         </div>
       </div>
 
       <div className="ground">
-        {renderPuzzlePieces()}
+        {/* {renderPuzzlePieces()} */}
       </div>
 
       <button onClick={resetPuzzlePiece}>Reset Puzzle</button>
