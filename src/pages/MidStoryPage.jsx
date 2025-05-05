@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(cssが適用されるようになる)
 import professors from "../data/professor.js";
+import backgroundimage from "../assets/background/mid-story.svg";
+import TextBox from "../components/common/TextBox/TextBox";
 
 function MidStoryPage() {
     // javaScriptが書ける↓
@@ -13,9 +15,15 @@ function MidStoryPage() {
 
    // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
    const professor = professors.find((p) => p.id === game.chosenProfessorId);
-
+   let texts =["こんにちは","私の名前は","教授です","今日はあなたに特別な授業をします。","この授業では、あなたのタイピングスキルを向上させるためのゲームを行います。","準備はいいですか？","それでは、始めましょう！"];
   return (
-    <div className="mid-story-page">
+    <div className="mid-story-page"
+       style={{
+        backgroundImage: `url(${backgroundimage})`,
+        height: "100vh", 
+        backgroundSize: "cover", 
+      }}
+      >
       <h1>MidStoryPage Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
@@ -27,6 +35,9 @@ function MidStoryPage() {
           <p>{professor.explanation}</p>
         </div>
       )}
+
+      
+      <TextBox scripts={professors[0].endings.bad} nextRoute={"/typing"} />
 
       {/* 難易度情報 */}
 

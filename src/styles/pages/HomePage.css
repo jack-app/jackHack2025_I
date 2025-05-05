@@ -1,3 +1,49 @@
+/* src/styles/pages/HomePage.css */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../../assets/professor/homepage.png"); 
+  background-size: cover;
+  background-position: center;
+  font-family: "sans-serif";
+  color: white;
+}
+
 .home-page h1 {
-  color: #00ff37;
+  font-size: 8rem;
+  color: white;
+  text-shadow:
+    -5px -5px 0 #664B4F,
+    5px -5px 0 #664B4F,
+    -5px 5px 0 #664B4F,
+    5px 5px 0 #664B4F;
+  margin-bottom: 8rem;
+  text-shadow: 0 0 7px #664B4F, 0 0 9px #664B4F;
+}
+
+.home-page > button {
+  font-size: 3rem;
+  padding: 2rem 4rem;
+  background-color: #664F4B;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+  text-shadow:
+    -1px -1px 0 #664B4F,
+    1px -1px 0 #664B4F,
+    -1px 1px 0 #664B4F,
+    1px 1px 0 #664B4F;
+  text-shadow: 0 0 7px #664B4F, 0 0 9px #664B4F;
+}
+
+.home-page button:hover {
+  transform: scale(1.05);
 }
