@@ -80,7 +80,7 @@
 .puzzle-piece#piece10,
 .puzzle-piece#piece11,
 .puzzle-piece#piece12 {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 
@@ -146,11 +146,6 @@
   visibility: hidden !important;
 }
 
-.puzzle-piece.hint .puzzle-cell {
-  background: linear-gradient(-45deg,
-    #fff6 25%, #0006 25%, #0006 50%, #fff6 50%, #fff6 75%, #0006 75%, #0006
-  );
-}
 
 /* Record */
 .record-board-wrapper {

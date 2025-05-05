@@ -9,6 +9,85 @@ const PuzzlePage = () => {
   const [dx, setDx] = useState(0);
   const [dy, setDy] = useState(0);
   const [isClick, setIsClick] = useState(false);
+  const [gridMap, setGridMap] = useState(
+    Array.from({ length: 5 }, () => Array(5).fill(null))
+  );
+
+  const pieceStructures = {
+    // piece1: { cols: 1, rows: 6, nullCells: [0,5] },
+    // piece2: { cols: 1, rows: 6, nullCells: [3,4] },
+    // piece3: { cols: 1, rows: 6, nullCells: [2,3] },
+    // piece4: { cols: 1, rows: 5, nullCells: [3] },
+    // piece5: { cols: 1, rows: 6, nullCells: [2,3] },
+    // piece6: { cols: 1, rows: 6, nullCells: [0,1] },
+    // piece7: { cols: 1, rows: 6, nullCells: [2,5]  },
+    // piece8: { cols: 1, rows: 6, nullCells: [2,3] },
+    // piece9: {  cols: 1, rows: 6, nullCells: [0,2] },
+    // piece10: {cols: 1, rows: 6, nullCells: [2,5]  },
+    // piece11: {cols: 1, rows: 6, nullCells: [1,2]  },
+    // piece12: { cols: 1, rows: 4, nullCells: [] },
+    piece1: { // Z
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 2, 3, 6, 7, 8, 11, 12, 13, 14, 15]
+    },
+    piece2: { // S
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 2, 3, 4, 5, 8, 11, 12, 13, 14, 15]
+    },
+    piece3: { // I
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15]
+    },
+    piece4: { // J
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 2, 3, 4, 6, 7, 8, 11, 12, 13, 14, 15]
+    },
+    piece5: { // L
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 3, 4, 5, 7, 8, 11, 12, 13, 14, 15]
+    },
+    piece6: { // T
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 2, 3, 7, 8, 10, 11, 12, 13, 14, 15]
+    },
+    piece7: { // O
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 2, 3, 4, 7, 8, 11, 12, 13, 14, 15]
+    },
+    piece8: { // Z
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 2, 3, 6, 7, 8, 11, 12, 13, 14, 15]
+    },
+    piece9: { // S
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 2, 3, 4, 5, 8, 11, 12, 13, 14, 15]
+    },
+    piece10: { // I
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15]
+    },
+    piece11: { // J
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 2, 3, 4, 6, 7, 8, 11, 12, 13, 14, 15]
+    },
+    piece12: { // L
+      cols: 4,
+      rows: 4,
+      nullCells: [0, 1, 3, 4, 5, 7, 8, 11, 12, 13, 14, 15]
+    },
+    
+  };
 
   const boardRef = useRef(null);
 
@@ -20,12 +99,12 @@ const PuzzlePage = () => {
     const puzzlePieces = document.querySelectorAll('.puzzle-piece');
     puzzlePieces.forEach((piece, index)  => {
       // 初期位置：グリッドの下、i=5（6行目）、j=0~N
-    const piecesPerRow = 4; // 1段に置く個数
+    const piecesPerRow = 6; // 1段に置く個数
     const i = 5 + Math.floor(index / piecesPerRow); 
-    const j = (index % 4);
+    const j = (index % 6);
 
-    const left = (j -1 ) * (cellSize*1.5);
-    const top = i * cellSize;
+    const left = (j - 2 ) * (cellSize*1.5);
+    const top = 4* (cellSize) + (i - 5) * (cellSize*1.5);
 
     piece.style.left = `${left}px`;
     piece.style.top = `${top}px`;
@@ -91,21 +170,35 @@ const PuzzlePage = () => {
     }
   };
 
-  const rotateReverseActivePiece = () => {
-    const state = parseInt(activePiece.getAttribute('data-state') || '0');
-    const newState = (state + 1) % 4;
-    activePiece.setAttribute('data-state', newState);
+  const getBoundingBox = (structure) => {
+    const { rows, cols, nullCells } = structure;
+  
+    let minRow = rows, maxRow = -1;
+    let minCol = cols, maxCol = -1;
+  
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        const idx = i * cols + j;
+        if (!nullCells.includes(idx)) {
+          if (i < minRow) minRow = i;
+          if (i > maxRow) maxRow = i;
+          if (j < minCol) minCol = j;
+          if (j > maxCol) maxCol = j;
+        }
+      }
+    }
+  
+    return {
+      startRow: minRow,
+      endRow: maxRow,
+      startCol: minCol,
+      endCol: maxCol
+    };
   };
 
   const placeActivePiece = (touch) => {
     const boardBounds = boardRef.current.getBoundingClientRect();
   const pieceBounds = activePiece.getBoundingClientRect();
-
-  // const centerX = pieceBounds.left + pieceBounds.width / 2;
-  // const centerY = pieceBounds.top + pieceBounds.height / 2;
-
-  // const j = Math.floor((centerX - boardBounds.left) / cellSize);
-  // const i = Math.floor((centerY - boardBounds.top) / cellSize);
 
   const mouseX = touch.pageX;
   const mouseY = touch.pageY;
@@ -119,7 +212,51 @@ const PuzzlePage = () => {
 
   let pos = 0;
   if (i >= 0 && i < 5 && j >= 0 && j < 5) {
-    pos = i * 5 + j + 1;
+    const pieceId = activePiece.id;
+    const structure = pieceStructures[pieceId];
+    const { rows, cols, nullCells } = structure;
+    const { startRow, endRow } = getBoundingBox(structure);
+
+    // ピースが枠外や重なっていないかチェック
+    const isValidPlacement = () => {
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const idx = r * cols + c;
+          console.log(`idx: ${idx}`);
+          if (nullCells.includes(idx)) continue;
+  
+          const ni = i + r;
+          const nj = j + c;
+          console.log(`ni: ${ni}, nj: ${nj}`);
+          // 枠外チェック
+          if (ni < 0 || ni >= 5 || nj < 0 || nj >= 5) return false;
+          // 重なりチェック
+          if (gridMap[ni][nj] !== null) {
+            console.log(`重なりチェック: gridMap[${ni}][${nj}] = ${gridMap[ni][nj]}`);
+            return false
+          };
+        }
+      }
+      console.log(`Valid placement: i: ${i}, j: ${j}`);
+      return true;
+    };
+
+    if (isValidPlacement()) {
+      console.log(`Valid placement at i: ${i}, j: ${j}`);
+      pos = i * 5 + j + 1;
+
+      // gridMapを更新
+      const updatedGrid = gridMap.map(row => [...row]);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const idx = r * cols + c;
+          if (nullCells.includes(idx)) continue;
+          updatedGrid[i + r][j + c] = pieceId;
+        }
+      }
+      console.log(`updatedGrid: ${JSON.stringify(updatedGrid)}`);
+      setGridMap(updatedGrid);
+    }
   }
 
   setPosition(activePiece, pos);
@@ -186,20 +323,6 @@ const PuzzlePage = () => {
   };
 
   const renderPuzzlePieces = () => {
-    const pieceStructures = {
-      piece1: { cols: 1, rows: 6, nullCells: [0,5] },
-      piece2: { cols: 1, rows: 6, nullCells: [3,4] },
-      piece3: { cols: 1, rows: 6, nullCells: [2,3] },
-      piece4: { cols: 1, rows: 5, nullCells: [3] },
-      piece5: { cols: 1, rows: 6, nullCells: [2,3] },
-      piece6: { cols: 1, rows: 6, nullCells: [0,1] },
-      piece7: { cols: 1, rows: 6, nullCells: [2,5]  },
-      piece8: { cols: 1, rows: 6, nullCells: [2,3] },
-      piece9: {  cols: 1, rows: 6, nullCells: [0,2] },
-      piece10: {cols: 1, rows: 6, nullCells: [2,5]  },
-      piece11: {cols: 1, rows: 6, nullCells: [1,2]  },
-      piece12: { cols: 1, rows: 4, nullCells: [] },
-    };
 
     return Object.entries(pieceStructures).map(([pieceId, structure]) => {
       const cells = [];
