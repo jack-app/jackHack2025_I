@@ -47,6 +47,8 @@ export const GameProvider = ({ children }) => {
   // タイピングゲームのスコア
   const [typingScore, setTypingScore] = useState(initialState.typingScore ?? 0);
 
+  const [shouldPersist, setShouldPersist] = useState(true);
+
   // 教授を選択リストに追加する関数
   const addProfessor = (id) => {
     setSelectedProfessors((prev) => [...prev, id]);
@@ -76,6 +78,7 @@ export const GameProvider = ({ children }) => {
 
   // 全てのデータを初期化する関数
   const resetGame = () => {
+    setShouldPersist(false);
     setDifficulty(null);
     setSelectedProfessors([]);
     setChosenProfessorId(null);
@@ -85,11 +88,13 @@ export const GameProvider = ({ children }) => {
     setTypingScore(0);
 
     sessionStorage.removeItem(STORAGE_KEY);
+    setShouldPersist(true);
   };
 
 
   // sessionStorageにデータを保存する
   useEffect(() => {
+    if (!shouldPersist) return;
     const dataToSave = {
       difficulty,
       selectedProfessors,
@@ -108,13 +113,17 @@ export const GameProvider = ({ children }) => {
         difficulty,
         setDifficulty,
         selectedProfessors,
+        setSelectedProfessors,
         addProfessor,
         chosenProfessorId,
         setChosenProfessorId,
         professorLovepointMap,
+        setProfessorLovepointMap,
+        initializeProfessorLovepoints,
         updateLovepoint,
         typingRound,
         nextTypingRound,
+        setTypingRound,
         puzzleScore,
         setPuzzleScore,
         typingScore,

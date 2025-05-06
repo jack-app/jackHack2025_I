@@ -16,7 +16,7 @@ function HomePage() {
     <div className="home-page">
       <TopLeftButtons /> 
      
-      <h1 className="title">教授との恋愛</h1>
+      <h1 className="title">禁断のゼミ</h1>
 
       {/*<pre>{JSON.stringify(game, null, 2)}</pre>*/}
 

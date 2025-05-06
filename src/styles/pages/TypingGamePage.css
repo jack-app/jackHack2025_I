@@ -3,12 +3,17 @@
 }
 .correct {
   color:aqua;
+  
 }
+
+
 .ato {
   color: brown;
+  
 }
 .current {
   color: #ffdd00;
+  
 }
 .problem {
   background-color: white;
@@ -17,4 +22,143 @@
   margin: 1.5% 10%;
   width: 80%;
   
+
+  
+}
+.nokoritime{
+  background-color: rgb(222, 146, 33);
+  border: 2px solid black;
+  margin: 1.5% 15%;
+  width: 70%;
+  text-align: center;
+}
+
+.targetText{
+  background-color: rgb(219, 183, 25);
+  border: 2px solid black;
+  text-align: center;
+  margin: 1.5% 10%;
+  width: 80%;
+
+
+}
+.kaitou{
+  background-color: white;
+  border: 2px solid black;
+  text-align: center;
+  margin: 1.5% 15%;
+  width: 70%;
+  text-size-adjust: 100%;
+  font-size: 20px;
+
+}
+.game-timer{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 1.5% 15%;
+  width: 70%;
+}
+h6{
+  background-color: rgb(219, 183, 25);
+  border: 2px solid black;
+  font-size: large;
+  text-align: center;
+  margin: 1.5% 20%;
+  width: 60%;
+  color: black;
+}
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #004777;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #003355;
+}
+
+.highlight_tekisetu{
+  color: red;
+}
+.highlight_green{
+  color: green;
+}
+.info_button{
+  border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 10%;
+    background: #6fa1ff;
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+    margin: 5% 0;
+}
+.start-button-maru{
+  display:inline-block;
+  width:20%;
+  margin :0 40%;
+  padding:1.0em;
+  color:#000;
+  text-shadow:1px 1px 2px #999;
+  background:#fff;
+  border:1px solid #777;
+  text-decoration:none;
+  box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.3);
+  cursor:pointer;
+  border-radius:10px 10px 10px 10px;
+  vertical-align:middle;
+  outline:dashed 1px #aaa;
+  outline-offset:-0.5em;
+  box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.3) inset;
+     
 }

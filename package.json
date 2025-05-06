@@ -11,13 +11,14 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
-    "@uppy/progress-bar": "^4.2.1",
-    "bootstrap": "^5.3.5",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.0.2",
     "@mui/material": "^7.0.2",
+    "@uppy/progress-bar": "^4.2.1",
+    "bootstrap": "^5.3.5",
     "react": "^19.0.0",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.3",
