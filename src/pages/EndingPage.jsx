@@ -19,7 +19,7 @@ function EndingPage() {
     // javaScriptが書ける↓
   const navigate = useNavigate();
   const game = useGame();
-  let pid = game.chosenProfessorId || 1;//選ばれていなければ雨日教授を出す(デバッグ用でもある)
+  let pid = parseInt(game.chosenProfessorId) - 1;//選ばれていなければ雨日教授を出す(デバッグ用でもある)
 
   // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
   const professor = professors.find((p) => p.id === game.chosenProfessorId);

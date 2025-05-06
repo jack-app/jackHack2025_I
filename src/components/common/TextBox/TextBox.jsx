@@ -17,7 +17,7 @@ const TextBox = ({scripts,nextRoute}) => {
             setCurrentIndex(currentIndex + 1);
         } else {
             console.log("nextRoute",nextRoute)
-            if (nextRoute) {
+            if (nextRoute == "/") {
                 game.setDifficulty(null);
                 game.setSelectedProfessors([]);
                 game.setChosenProfessorId(null);
