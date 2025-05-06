@@ -23,24 +23,24 @@ function EndingPage() {
 
   // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
   const professor = professors.find((p) => p.id === game.chosenProfessorId);
-
+  let lp = game.professorLovepointMap[pid+1];
   // タイピング結果によるエンディングの表示
   //  // 暫定的にスコアを指定
 
   // ゲームの成績に応じてエンディング画面を分岐
   let endingImage;
   let backgroundColor;
-  if (game.score >= 80) {
+  if (lp > 80) {
     endingImage = happyEnding;
     backgroundColor = "blanchedalmond"; // or antiquewhite
-  } else if (game.score >= 50) {
+  } else if (lp >= 50) {
     endingImage = friendEnding;
     backgroundColor = "bisque"; // or palegoldenrod
   } else {
     endingImage = badEnding;
     backgroundColor = "indianred"; // or brown
   }
-    let lp = game.professorLovepointMap[pid];
+   
     let ending;
     if(lp < 30){
       console.log(pid)
