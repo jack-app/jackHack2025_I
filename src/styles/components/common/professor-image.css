@@ -1,6 +1,17 @@
 /* professorImage.css */
+.professor-container {
+    width: 100%;
+    height: 100vh; /* ビューポートの高さいっぱいに */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
 .professor {    
-    margin: 0 50% 0 20%; /* 上下左右のマージンを指定 */
-    object-fit: cover; /* 画像を枠にフィットさせる */
-    background-size: cover; /* 背景画像を枠にフィットさせる */
+    width: 100%;
+    height: 100%;
+    background-size: contain; /* 画像が完全に表示されるようにする */
+    background-position: center; /* 画像を中央に配置 */
+    background-repeat: no-repeat; /* 画像の繰り返しを防止 */
 }
