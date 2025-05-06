@@ -519,6 +519,22 @@ const PuzzlePage = () => {
     <>
       履修登録パズルを完成させましょう！！<br />
       すべての必修マスを埋めると<br />履修登録ボタンが押せるようになります<br />
+      <button
+  onClick={() => navigate('/professor-select')}
+  style={{
+    fontSize: '12px',
+    padding: '10px 20px',
+    marginTop: '10px',
+    backgroundColor: '#8aa99b',
+    color: 'white',
+    border: 'none',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    transition: '0.2s ease',
+  }}
+>
+  教授説明を見る
+</button>
     </>
   }/>
       <h2 className="puzzle-title">履修登録</h2>
