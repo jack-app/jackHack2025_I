@@ -7,12 +7,13 @@ import ProfessorSyusseki from "../../../assets/professor/4.png"
 const ProfessorImages = [ProfessorAmabi,ProfessorKagiyama,ProfessorHayasugi,ProfessorSyusseki];
 
 const Professor = ({professorId}) => {
+    console.log("professorId", professorId);
     return (
         <div className="professor-container">
             <div 
                 className="professor"
                 style={{
-                    backgroundImage: `url(${ProfessorImages[professorId-1]})`,
+                    backgroundImage: `url(${ProfessorImages[professorId]})`,
                 }}
             />
         </div>
