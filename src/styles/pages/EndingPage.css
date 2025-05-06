@@ -11,9 +11,6 @@
   background-size: cover; /* cotain or cover or 100% 100% */
   
 
-  /* flex レイアウト */
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 0; /* 余白 */
@@ -33,9 +30,7 @@
     /* background-size: contain; */
   }
 }
-.professorFigure {
-  left: -400px;
-  align-items: left;
-  justify-content: left;
-  padding: 0;
+
+.professorFigureInEnding{
+  margin-right:50vw;
 }

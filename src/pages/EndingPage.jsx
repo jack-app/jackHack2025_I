@@ -61,10 +61,12 @@ function EndingPage() {
       }}
     >
  <ShareButton />
- <div className="professorFigure">
+ <div className="professorFigureInEnding">
  <Professor professorId={pid}/>
  </div>
+ <div className="professorText">
 <TextBox scripts={ending} nextRoute={"/"}/>
+</div>
       {/* タイトル画面に戻るボタン */}
       <button 
         style={{
