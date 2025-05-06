@@ -8,6 +8,7 @@ import "../styles/pages/DifficultySelectPage.css"; // CSSスタイルをイン�
 // import professors from "../data/professor.js";
 import GameControlButton from "../components/common/GameControllButton/GameControlButton";
 import backgroundimage from "../assets/background/difficulty.svg";
+import TopLeftButtons from "../components/common/TopLeftButtons";
 
 function DifficultySelectPage() {
   // javaScriptが書ける↓
@@ -33,11 +34,17 @@ function DifficultySelectPage() {
         backgroundSize: "cover", 
       }}
     >
-      <h1>Difficulty Select Page</h1>
-
-      {/* 現在のゲーム状態を表示 */}
-      <pre>{JSON.stringify(game, null, 2)}</pre>
-
+      <TopLeftButtons description={
+    <>
+      タイピングが自信のある人は<br />
+      HARDがおすすめ<br />
+      easy: 40s<br />
+      normal: 20s<br />
+      hard: 15s<br />
+      タイピングの時間が変わるよ
+    </>
+  }/>
+      <h1 className="title">難易度選択</h1>
       {/* 難易度選択ボタン */}
       {/* NOTE:状態表示に押し出されて表示がずれるが、とればうまくいくのでOK */}
       <GameControlButton label="EASY" onClick={() => handleDifficultySelect("easy")} />

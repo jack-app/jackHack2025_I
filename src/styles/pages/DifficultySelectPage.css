@@ -1,3 +1,8 @@
-.difficulty-page h1 {
-  color: #ff0000;
+.title {
+  color: #664B4F; /* 茶色 */
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  font-weight: bold;
+  text-align: center;
+  margin-top:0;
+  font-size: 3rem;
 }
