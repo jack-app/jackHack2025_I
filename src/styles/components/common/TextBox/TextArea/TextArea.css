@@ -1,14 +1,15 @@
 .text-area {
-    background-color: #ffffff; /* White background */
+    background-color: rgba(255, 255, 255, 0.7); /* White background */
     border: 2px solid black; 
     border-radius: 4px; /* Optional: Rounded corners */
-    padding: 15px; /* Inner spacing */
+    padding: 15px 5%; /* Inner spacing */
     padding-left:10%;
     font-size: 16px; /* Font size */
     color: #000000; /* Text color */
     width: 80%; /* Full width */
+    height: 120px; /* Fixed height */
     box-sizing: border-box; /* Include padding and border in width */
-    margin: 0 10%; /* Add horizontal margin with 10% on both sides */
+    margin: 0 auto; /* Add horizontal margin with 10% on both sides */
 }
 
 .text-area:focus {
@@ -20,6 +21,8 @@
 .text-area-container {
     position: relative; /* 子要素の位置を相対的に配置 */
     overflow: hidden; /* 子要素がはみ出さないようにする */
+    padding-top: 2.5rem; /* 上部に余白を追加 */
+    width: 100vw; /* ビューポートの幅に合わせる */
 }
 
 .start-game-text {

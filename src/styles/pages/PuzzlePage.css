@@ -25,7 +25,8 @@
 
 
 .puzzle-page h2 {
-  font-family: "Lora", "Times New Roman", serif;
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  font-weight: bold;
   font-size: 2rem;
   color: #664B4F;
   margin-bottom:10px;
@@ -41,6 +42,7 @@
   border: none;
   border-radius: 6px;
   margin-top: 20px;
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
   font-weight: bold;
   font-size: 1rem;
   transition: background-color 0.3s;
@@ -65,7 +67,8 @@
 }
 
 .board {
-  font-family: "Lora", "Times New Roman", serif;
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  font-weight: bold;
   margin: 0 auto 0;
   padding: 2rem auto 0;
   width: var(--board-size);
@@ -225,7 +228,8 @@
 }
 
 .professor-name {
-  font-family: "Lora", "Times New Roman", serif;
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  font-weight: bold;
   margin-top: 0 auto 1vh;
   font-size: 0.8rem;
   font-weight: bold;

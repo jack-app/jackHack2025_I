@@ -3,9 +3,33 @@
     top: 10px;
     right: 10px;
     color: white;
-    padding: 10px 20px;
+    padding: 20px 20px;
     border-radius: 5px;
     font-size: 14px;
     z-index: 1000;
-    width: 220px
+    width: 250px
 }
+.progress-container {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    border: 2px solid darkred; /* ベージュ色の枠線を追加 */
+    border-radius: 10px; /* 枠線を角丸にする */
+    background-color: #f8f9fa;
+    overflow: hidden; 
+}
+
+.progress-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 1;
+}
+.progress-bar {
+    height:30px;
+    background-color: white;
+}
+

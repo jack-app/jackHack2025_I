@@ -419,12 +419,15 @@ const PuzzlePage = () => {
     const mostUsed = Object.entries(pieceUsageCount)
       .filter(([_, count]) => count === maxCount)
       .map(([id]) => parseInt(id));
-  
+    
+    const chosenId = mostUsed[Math.floor(Math.random() * mostUsed.length)];
     // 3. Contextにセット
     if (game?.setSelectedProfessors) {
       game.setSelectedProfessors(mostUsed);
+      game.setChosenProfessorId(chosenId);
     } else {
       game.selectedProfessors = mostUsed;
+      game.chosenProfessorId = chosenId;
     }
   
     console.log("選ばれた教授:", mostUsed);
@@ -516,6 +519,23 @@ const PuzzlePage = () => {
     <>
       履修登録パズルを完成させましょう！！<br />
       すべての必修マスを埋めると<br />履修登録ボタンが押せるようになります<br />
+      <button
+  onClick={() => navigate('/professor-select')}
+  style={{
+    fontWeight: 'bold',
+    fontSize: '12px',
+    padding: '10px 20px',
+    marginTop: '10px',
+    backgroundColor: '#8aa99b',
+    color: 'white',
+    border: 'none',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    transition: '0.2s ease',
+  }}
+>
+  教授説明を見る
+</button>
     </>
   }/>
       <h2 className="puzzle-title">履修登録</h2>
@@ -539,7 +559,7 @@ const PuzzlePage = () => {
   onClick={() => {
     if (isAllRequiredFilled) {
       calculateSelectedProfessors(); 
-      navigate('/professor-select'); // 遷移先のページを指定
+      navigate('/typing'); // 遷移先のページを指定
       console.log("遷移します！");
     }
   }}
