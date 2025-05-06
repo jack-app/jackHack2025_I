@@ -18,6 +18,7 @@
     "@uppy/progress-bar": "^4.2.1",
     "bootstrap": "^5.3.5",
     "react": "^19.0.0",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.3",

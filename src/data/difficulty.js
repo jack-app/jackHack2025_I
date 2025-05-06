@@ -10,7 +10,7 @@ const difficultySettings = {
   hard: {
     level: "hard",
     typingThreshold: 60, // 60文字以上で成功
-  },
+  }
 };
 
 export default difficultySettings;
