@@ -12,7 +12,7 @@ const Professor = ({professorId}) => {
             <div 
                 className="professor"
                 style={{
-                    backgroundImage: `url(${ProfessorImages[professorId-1]})`,
+                    backgroundImage: `url(${ProfessorImages[professorId]})`,
                 }}
             />
         </div>
