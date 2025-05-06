@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useGame } from "../contexts/GameContext";
 import TopLeftButtons from "../components/common/TopLeftButtons";
 import professors from '../data/professor.js';
-import professorImage1 from '../assets/professor/1.png'; 
-import professorImage2 from '../assets/professor/2.png';
-import professorImage3 from '../assets/professor/3.png';
-import professorImage4 from '../assets/professor/4.png';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
 const PuzzlePage = () => {
   const cellSize = 60;
@@ -476,6 +475,11 @@ const PuzzlePage = () => {
     </div>
   )};
   
+  const resetBoard = () => {
+    resetPuzzlePiece(); // すでに実装されているピースの初期化
+    setGridMap(Array.from({ length: 5 }, () => Array(5).fill(null))); // 盤面初期化
+  };
+
   useEffect(() => {
     resetPuzzlePiece();
   }, []);
@@ -525,6 +529,12 @@ const PuzzlePage = () => {
         </div>
 
       </div>
+
+      <Tooltip title="リセット" placement="top">
+        <IconButton onClick={resetBoard} className="reset-icon-button">
+          <RestartAltIcon style={{ fontSize: "40px" }}/>
+        </IconButton>
+      </Tooltip>
       <button
   onClick={() => {
     if (isAllRequiredFilled) {
