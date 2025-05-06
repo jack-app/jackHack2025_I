@@ -522,6 +522,7 @@ const PuzzlePage = () => {
       <button
   onClick={() => navigate('/professor-select')}
   style={{
+    fontWeight: 'bold',
     fontSize: '12px',
     padding: '10px 20px',
     marginTop: '10px',

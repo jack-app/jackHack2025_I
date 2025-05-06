@@ -46,7 +46,9 @@ img.icon-image{
   text-align: center;         /* 中央揃え */
   white-space: normal;        /* 自然な改行を許可 */
   word-break: break-word;     /* 長い単語がある場合でも折り返し */
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.6;
   color: #ffead8;
+  font-family: "ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  font-weight: bold;
 }
