@@ -64,7 +64,7 @@ const professors = [
     ],
     typingTexts: [
       [["遊びに行くため休みます", "asobiniikutameyasumimasu",-20],
-      ["今日休むからよろ", "kyouyasmukarayoro",-50],
+      ["今日休むからよろ", "kyouyasumukarayoro",-50],
       ["雨なので休みます", "amenanodeyasumimasu",20]],
       [["課題はできるだけ早く提出します", "kadaihadekirudakehayakuteisyutusimasu",20],
       ["提出期限を延ばしてください。", "teisyutukigennwonobasitekudasai",-10],
@@ -72,6 +72,7 @@ const professors = [
       [["単位ください", "tanikudasai",-10],
       ["あなたのことが嫌いです", "anatanokotogakiraidesu",-200],
       ["授業楽しみにしてます", "jugyoutanosiminisitemasu",10]]
+      //今のままだと４つ目作るとエラー出る
     ],
     reactions: {
       success: [
@@ -163,10 +164,8 @@ const professors = [
       ["もっと私に厳しくしてください", "mottowatashinikibishikushitekudasai",-100]],
      [ ["よろしくお願いいたします", "yoroshikuonegaiitashimasu",20],
       ["絶対にクリアします", "zettainikuriashimasu",20],
-      ["体調管理も取り組みます", "taichoukanrimotorikumimasu",20]],[
-      ["単位取りに行きます", "tani tori ni ikimasu"],
-      ["先生に認められたいです", "sensei ni mitomeraretai desu"],
-      ["この試練を乗り越えます", "kono shiren wo norikoemasu"]]
+      ["体調管理も取り組みます", "taichoukanrimotorikumimasu",20]]
+      
     ],
     reactions: {
       success: [
@@ -258,9 +257,7 @@ const professors = [
       [["私のスピードは五十三万です", "watashinosupi-dohagojuusanmandesu",53],
       ["スローライフは最高です", "suro-raifuhasaikoudesu",-10],
       ["絶対に落ちこぼれません", "zettai ni ochikoboremasen",20]],
-      [["先生の指導のもと成長したいです", "sensei no shidou no moto seichou shitai desu",20],
-      ["どんな状況でも諦めません", "donna joukyou demo akiramemasen",10],
-      ["先生のスピード感に憧れています", "sensei no supiido kan ni akogareteimasu",30]]
+      
     ],
     reactions: {
       success: [
@@ -354,9 +351,7 @@ const professors = [
       [["授業の内容しっかり復習しました", "jugyounonaiyousikkarihukusyuusimasita",20],
       ["出席点をくれませんかくれませんか", "syussekitennwokuremasenka",-50],
       ["小テスト簡単にしてください", "syoutesutokantannnisitekudasai",-50]],
-      [["先生の一言を励みに頑張ってます", "senseinohitokotowohageminiganbattemasu",20],
-      ["成績絶対あきらめません", "seisekizettaiakiramemasen",10],
-      ["単位ゲット必ず達成します", "tannigettokanarazutasseisimasu",20]],
+      
     ],
     reactions: {
       success: [
