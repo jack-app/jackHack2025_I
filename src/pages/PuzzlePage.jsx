@@ -419,12 +419,15 @@ const PuzzlePage = () => {
     const mostUsed = Object.entries(pieceUsageCount)
       .filter(([_, count]) => count === maxCount)
       .map(([id]) => parseInt(id));
-  
+    
+    const chosenId = mostUsed[Math.floor(Math.random() * mostUsed.length)];
     // 3. Contextにセット
     if (game?.setSelectedProfessors) {
       game.setSelectedProfessors(mostUsed);
+      game.setChosenProfessorId(chosenId);
     } else {
       game.selectedProfessors = mostUsed;
+      game.chosenProfessorId = chosenId;
     }
   
     console.log("選ばれた教授:", mostUsed);
@@ -539,7 +542,7 @@ const PuzzlePage = () => {
   onClick={() => {
     if (isAllRequiredFilled) {
       calculateSelectedProfessors(); 
-      navigate('/professor-select'); // 遷移先のページを指定
+      navigate('/typing'); // 遷移先のページを指定
       console.log("遷移します！");
     }
   }}
