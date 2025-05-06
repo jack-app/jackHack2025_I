@@ -15,7 +15,7 @@ import backgroundimage from "../assets/background/typinggame.svg";
 import TopLeftButtons from "../components/common/TopLeftButtons"; // ← 追加
 import difficultySettings from "../data/difficulty.js";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
-
+import Lovepointbar from "../components/common/Lovepointbar.jsx";
 
 
 
@@ -248,9 +248,9 @@ const { time, isRunning, start, stop, reset } = useTimer();
        (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2>タイピングゲーム<br />教授へ謝罪メールを送ろう</h2>
+            <h2>タイピングゲーム<br /><dev className="highlight_tekisetu">{professor.name}</dev>教授へ謝罪メールを送ろう</h2>
             <p>あなたは授業を休んでしまった。このまま何も連絡を入れないと相手の心証が悪く落単になってしますかもしれない。<br />
-              どうにかして誠意の込めたメールを送って教授の好感度を上げよう！
+              どうにかして誠意の込めたメールを送って教授の好感度を上げて攻略すればなんとかなるかもしれない。
             </p>
             
             <p>
@@ -272,7 +272,7 @@ const { time, isRunning, start, stop, reset } = useTimer();
         <div className="modal-overlay">
           <div className="modal-content">
             <h4>リザルト</h4>
-            <p>{game.typingRound -1}回目の<br />あなたの教授への謝罪メールは{scoreoftyping}ポイント
+            <p>{game.typingRound -1}回目の<br />あなたの{professor.name}への謝罪の謝罪メールは{scoreoftyping}ポイント
             </p>
            
             <p>
@@ -294,6 +294,7 @@ const { time, isRunning, start, stop, reset } = useTimer();
 
 
       <TopLeftButtons /> {/* ← ここで表示させます */}
+      < Lovepointbar />
     <div className="game-timer">
   <CountdownCircleTimer
     isPlaying={isRunning}
@@ -308,8 +309,8 @@ const { time, isRunning, start, stop, reset } = useTimer();
 
       <div className="typing-game-page" onKeyDown={handleKeyDown}
       >
-        <h6>授業を休んでしまった
-          教授にメールを送ろう！
+        <h6>攻略対象：<dev className="highlight_tekisetu">{professor.name}</dev><br/>
+        {professor.name}への謝罪のメールを送ろう！
           <br />
           
         </h6>
@@ -401,8 +402,12 @@ const { time, isRunning, start, stop, reset } = useTimer();
         {/* 難易度情報 */}
 
         {/* 次へ進むボタン（エンディング画面へ） */}
-        <button onClick={() => navigate("/ending")}>エンディングへ</button>
+
+        {/*
+     <button onClick={() => navigate("/ending")}>エンディングへ</button>
+        */}
       </div>
+      {/*
       <div>
         履歴
       </div>
@@ -411,8 +416,9 @@ const { time, isRunning, start, stop, reset } = useTimer();
       </div>
       <div className="bonus">
         {!j == 0 && (<div className="tokutenpop">Bonus {professor.typingTexts[j][i][2]} points</div>)}</div>
-        <pre>{JSON.stringify(game, null, 2)}</pre>
+        <pre>{JSON.stringify(game, null, 2)}</pre>*/}
     </div>
+    
 
 
 
