@@ -22,6 +22,7 @@ function MidStoryPage() {
    // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
    const professor = professors.find((p) => p.id === game.chosenProfessorId);
    let pid = parseInt(game.chosenProfessorId) - 1;//選ばれていなければ雨日教授を出す(デバッグ用でもある)
+   console.log(pid)
    return (
     <div className="mid-story-page"
        style={{
@@ -31,7 +32,7 @@ function MidStoryPage() {
       }}
       >
           <TopLeftButtons />
-         < Lovepointbar />
+         {/* < Lovepointbar /> */}
 
    
          <div className="professorFigure">
