@@ -18,6 +18,8 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 
 
+
+
 let nanido = 0; // 難易度を初期化
 
 //hard,normal,easyのいずれか
@@ -41,6 +43,7 @@ function TypingGamePage() {
 
   const closeresult = () => {
     setResult(false); // リザルトを閉じる
+    setScoreoftyping(0); // スコアをリセット
     if(game.typingRound >=4) {
       navigate("/ending"); // エンディング画面に遷移
       }else{ navigate("/mid-story");} // パズル画面に遷移
@@ -84,7 +87,11 @@ function TypingGamePage() {
       if (time <= 0) {
         stop(); // タイマーを停止
         game.nextTypingRound();
+        game.updateLovepoint(professor.id, -30);
+        setScoreoftyping ((prev) => prev -30); // スコアを更新
+        //時間切れ
         setResult(true); // リザルトを表示
+
   
       }
       return
@@ -95,7 +102,9 @@ function TypingGamePage() {
   const navigate = useNavigate();
   const game = useGame();
 
-
+  /*リザルト用*/ 
+  
+  
 
 
 
@@ -110,10 +119,12 @@ if (game.difficulty === difficultySettings.easy.level) {
   nanido = 5;
   console.error("Invalid difficulty level:", difficulty);
 }
+/*
 console.log("nanido", nanido)
 console.log("difficultySettings", difficultySettings)
 console.log("difficulty", difficulty)
 console.log("難易度", difficultySettings.level)
+*/
 
 
 const { time, isRunning, start, stop, reset } = useTimer();
@@ -132,12 +143,13 @@ const { time, isRunning, start, stop, reset } = useTimer();
   const [i, setI] = useState(0);
   const [j, setJ] = useState(0);
   const [start_button, setStartButton] = useState(false);
+  const [scoreoftyping, setScoreoftyping] = useState(0);// スコアを管理するための状態変数
   
 
 
-
+  /*
   console.log("j", professor.typingTexts[j])
-  console.log("youso1", professor.typingTexts[j][0][1])
+  console.log("youso1", professor.typingTexts[j][0][1])*/
   let targetText = professor.typingTexts[j][i][1];// タイピングゲームの対象テキスト
 
   const handleKeyDown = (e) => {
@@ -161,25 +173,28 @@ const { time, isRunning, start, stop, reset } = useTimer();
       if (isCorrect) {
         setCurrentIndex((prev) => prev + 1);
         game.updateLovepoint(professor.id, 1); // 好感度を1上げる
+        setScoreoftyping((prev) => prev + 1); // スコアを更新
+        
         if (currentIndex + 1 === targetText.length) {
           // setI(i + 1); // iを更新
           setJ(j + 1); // jを更新
-          console.log("i", i)
-          console.log("j", j)
+          /*console.log("i", i)
+          console.log("j", j)*/
           setCurrentIndex(0);
           setClickedButton(null);
           stop(); // タイマーを一時停止
-          console.log("key", key);
+          /*console.log("key", key);*/
 
 
-          game.updateLovepoint(professor.id, professor.typingTexts[j][i][2]); // 好感度を1上げる
-          console.log("好感度", game.professorLovepointMap[professor.id])
-          console.log("key", key);
+          game.updateLovepoint(professor.id, professor.typingTexts[j][i][2]); // 好感度bonus上げる
+          setScoreoftyping((prev) => prev + professor.typingTexts[j][i][2]); // スコアbonusを更新
+         /* console.log("好感度", game.professorLovepointMap[professor.id])
+          console.log("key", key);*/
 
 
           //あいうあいう
           if (professor.typingTexts.length - 1 == j) {
-            console.log("ゲームクリア！");
+            /*console.log("ゲームクリア！");*/
             // setI(0); // iを更新
             setJ(0); // jを更新
             stop(); // タイマーを一時停止
@@ -197,8 +212,8 @@ const { time, isRunning, start, stop, reset } = useTimer();
 
   const handleClick = (buttonIndex, text) => {
 
-    console.log("Button clicked:", buttonIndex);
-    console.log("Text:", text);
+    /*console.log("Button clicked:", buttonIndex);
+    console.log("Text:", text);*/
     const i = buttonIndex - 1; // ボタンのインデックスを取得
     setI(i); // iを更新
     targetText = text; // ボタンがクリックされたときに対象テキストを設定
@@ -256,12 +271,12 @@ const { time, isRunning, start, stop, reset } = useTimer();
        (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2>リザルト</h2>
-            <p>あなたの教授への謝罪メールは何ポイント
+            <h4>リザルト</h4>
+            <p>{game.typingRound -1}回目の<br />あなたの教授への謝罪メールは{scoreoftyping}ポイント
             </p>
-            
+           
             <p>
-              あなたは飛行機級です
+              これで教授は納得してくれるはず…
             </p>
 
             <button onClick={() => closeresult()}>次へ進む

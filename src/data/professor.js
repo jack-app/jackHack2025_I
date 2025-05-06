@@ -192,18 +192,18 @@ const professors = [
       ]
     ],
     typingTexts: [
-      [["体調がすぐれないため欠席します", "taichougasugurenaitamekessekishimasu",20],
-      ["あなたのパスワードのせいで遅れました", "anatanopasuwa-donoseideokuremashita",-30],
-      ["提出必ず間に合わせます", "teishutsukanarazumaniawasemasu",20]],
+      [["体調がすぐれないため欠席します", "taityougasugurenaitamekessekisimasu",20],
+      ["あなたのパスワードのせいで遅れました", "anatanopasuwa-donoseideokuremasita",-30],
+      ["提出必ず間に合わせます", "teisyutukanarazumaniawasemasu",20]],
       [["課題の範囲教えてください", "kadainohaniosietekudasai",10],
       ["テストいらないです", "tesutoiranaidesu",-100],
       ["先生の授業は世界で一番わかりやすいです", "senseinojugyouhasekaideitibanwakariyasuidesu",100]],
       [["単位ください", "tanikudasai",-50],
-      ["先生にどこまでもついていきます", "senseinidokomademotsuiteikimasu",20],
-      ["もっと私に厳しくしてください", "mottowatashinikibishikushitekudasai",-100]],
-     [ ["よろしくお願いいたします", "yoroshikuonegaiitashimasu",20],
-      ["絶対にクリアします", "zettainikuriashimasu",20],
-      ["体調管理も取り組みます", "taichoukanrimotorikumimasu",20]]
+      ["先生にどこまでもついていきます", "senseinidokomademotuiteikimasu",20],
+      ["もっと私に厳しくしてください", "mottowatasinikibisikusitekudasai",-100]],
+     [ ["よろしくお願いいたします", "yorosikuonegaiitashimasu",20],
+      ["絶対にクリアします", "zettainikuriasimasu",20],
+      ["体調管理も取り組みます", "taityoukanrimotorikumimasu",20]]
       
     ],
     reactions: {
@@ -304,18 +304,18 @@ const professors = [
       
     ],
     typingTexts: [
-      [ ["申し訳ありませんリアル出席できません", "moushiwakearimasenriarushussekidekimasen",20],
-      ["体調が優れず配信で追いかけます", "taichougasugurezuhaishindeoikakemasu",0],
-      ["小テスト知りませんでした", "shoutesutoshirimasendeshita",-20]],
+      [ ["申し訳ありませんリアル出席できません", "mousiwakearimasenriarusyussekidekimasen",20],
+      ["体調が優れず配信で追いかけます", "taityougasugurezuhaisindeoikakemasu",0],
+      ["小テスト知りませんでした", "syoutesutosirimasendesita",-20]],
       [["オンラインでも遅れずついていきます", "onraindemookurezutuiteikimasu",10],
       ["先生の授業速すぎます", "senseinojugyouhayasugimasu",-10],
       ["単位ください", "tanikudasai",-50]],
       [["授業退屈です", "jugyoutaikutudesu",-50],
-      ["先生の期待に応えたいです", "sensei no kitai ni kotaetai desu",20],
+      ["先生の期待に応えたいです", "senseinokitainikotaetaidesu",20],
       ["マイペースでいたいです", "maipe-sudeitaidesu",-10]],
       [["私のスピードは五十三万です", "watashinosupi-dohagojuusanmandesu",53],
       ["スローライフは最高です", "suro-raifuhasaikoudesu",-10],
-      ["絶対に落ちこぼれません", "zettai ni ochikoboremasen",20]],
+      ["絶対に落ちこぼれません", "zettainiotikoboremasen",20]],
       
     ],
     reactions: {
