@@ -19,10 +19,14 @@ function Lovepointbar() {
     return (
         <div className="lovepoint-bar">
             <div className="progress-container">
+                <div className="progress-divider" style={{ left: `${(100 / max) * 100}%` }}></div>
+                <div className="progress-divider" style={{ left: `${(200 / max) * 100}%` }}></div>
                 <ProgressBar
                     now={current}
                     max={max}
-                    variant={getVariant(current)} // 色を動的に設定
+                    variant={getVariant(current)}
+                    className="progress-bar"
+                
                 />
             </div>
             <div className="progress-text">
