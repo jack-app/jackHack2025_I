@@ -32,7 +32,7 @@ const TextBox = ({scripts,nextRoute}) => {
     let isLastScript = currentIndex === scripts.length - 1
 
     return (
-        <div onClick={handleClick}>
+        <div onClick={handleClick} className= "textbox">
             <TextArea texts={scripts[currentIndex][1]} noMoreScript = {isLastScript}/>
             <NameTag name={scripts[currentIndex][0]}  className={"nametag-in-textbox"}/>
         </div>
