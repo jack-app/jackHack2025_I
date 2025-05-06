@@ -101,6 +101,7 @@ function TypingGamePage() {
 
   const navigate = useNavigate();
   const game = useGame();
+  console.log("game",game.professorLovepointMap)
 
   /*リザルト用*/ 
   
@@ -392,12 +393,6 @@ const { time, isRunning, start, stop, reset } = useTimer();
           
         </div>
         {/* 選ばれた教授情報 */}
-        {professor && (
-          <div className="professor-info">
-            <h2>{professor.name}への謝罪</h2>
-            <p>{professor.explanation}</p>
-          </div>
-        )}
 
         {/* 難易度情報 */}
 

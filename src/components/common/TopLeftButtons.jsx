@@ -32,7 +32,7 @@ const TopLeftButtons = ({ description }) => {
 
   return (
     <div className="top-left-buttons">
-      <button className="icon-button" onClick={() => navigate("/settings")}>
+      <button className="icon-button" >
         <img src={settingsIcon} alt="設定" className="icon-image" />
       </button>
       <button className="icon-button" onClick={() => setShowDescription(!showDescription)}>
