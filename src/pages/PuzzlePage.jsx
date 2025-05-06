@@ -508,7 +508,12 @@ const PuzzlePage = () => {
   
   return (
     <div className="puzzle-page">
-      <TopLeftButtons />
+      <TopLeftButtons description={
+    <>
+      履修登録パズルを完成させましょう！！<br />
+      すべての必修マスを埋めると<br />履修登録ボタンが押せるようになります<br />
+    </>
+  }/>
       <h2 className="puzzle-title">履修登録</h2>
       {professors.slice(0, 4).map((prof, i) => (
           <ProfessorIcon key={prof.id} prof={prof} color={getProfessorColor(i)} top={i} left={40} />
