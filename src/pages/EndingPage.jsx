@@ -11,7 +11,6 @@ import ShareButton from "../components/common/share-button";
 import TextBox from "../components/common/TextBox/TextBox";
 import Professor from "../components/common/ProfessorImage/Professor";
 
-// 画像のインポート
 import happyEnding from "../assets/background/happyEnding.svg";
 import friendEnding from "../assets/background/friendEnding.svg";
 import badEnding from "../assets/background/badEnding.svg";
@@ -26,7 +25,7 @@ function EndingPage() {
   const professor = professors.find((p) => p.id === game.chosenProfessorId);
 
   // タイピング結果によるエンディングの表示
-  game.score = 50; // 暫定的にスコアを指定
+  //  // 暫定的にスコアを指定
 
   // ゲームの成績に応じてエンディング画面を分岐
   let endingImage;
@@ -41,17 +40,18 @@ function EndingPage() {
     endingImage = badEnding;
     backgroundColor = "indianred"; // or brown
   }
-
     let lp = game.professorLovepointMap[pid];
     let ending;
     if(lp < 30){
+      console.log(pid)
+      console.log(professors[pid])
       ending= professors[pid].endings.bad
     }else if(lp<=80){
       ending= professors[pid].endings.friend
     }else{
       ending= professors[pid].endings.lover
     }
-
+    
   return (
     <div
       className="ending-page"
@@ -61,7 +61,9 @@ function EndingPage() {
       }}
     >
  <ShareButton />
+ <div className="professorFigure">
  <Professor professorId={pid}/>
+ </div>
 <TextBox scripts={ending} nextRoute={"/"}/>
       {/* タイトル画面に戻るボタン */}
       <button 
@@ -69,7 +71,11 @@ function EndingPage() {
           marginTop: "100px", // ボタンの余白
           position: "relative"
         }}
-        onClick={() => navigate("/")}
+        onClick={() =>{ 
+          game.resetGame();
+          console.log("game reset")
+          navigate("/");
+        }}
       >
         タイトルに戻る
       </button>

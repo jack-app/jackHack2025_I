@@ -33,3 +33,9 @@
     /* background-size: contain; */
   }
 }
+.professorFigure {
+  left: -400px;
+  align-items: left;
+  justify-content: left;
+  padding: 0;
+}
