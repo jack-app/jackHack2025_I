@@ -7,6 +7,11 @@ import "../styles/pages/MidStoryPage.css"; // CSSスタイルをインポート(
 import professors from "../data/professor.js";
 import backgroundimage from "../assets/background/mid-story.svg";
 import TextBox from "../components/common/TextBox/TextBox";
+import TopLeftButtons from "../components/common/TopLeftButtons";
+import Lovepointbar from "../components/common/Lovepointbar.jsx";
+
+
+
 
 function MidStoryPage() {
     // javaScriptが書ける↓
@@ -15,8 +20,8 @@ function MidStoryPage() {
 
    // ゲーム状態から教授リストを取得.chusenProfessorIdを使って当てはまるものを返している
    const professor = professors.find((p) => p.id === game.chosenProfessorId);
-   let texts =["こんにちは","私の名前は","教授です","今日はあなたに特別な授業をします。","この授業では、あなたのタイピングスキルを向上させるためのゲームを行います。","準備はいいですか？","それでは、始めましょう！"];
-  return (
+   let pid = game.chosenProfessorId || 1;//選ばれていなければ雨日教授を出す(デバッグ用でもある)
+    return (
     <div className="mid-story-page"
        style={{
         backgroundImage: `url(${backgroundimage})`,
@@ -24,6 +29,8 @@ function MidStoryPage() {
         backgroundSize: "cover", 
       }}
       >
+          <TopLeftButtons />
+         < Lovepointbar />
       <h1>MidStoryPage Page</h1>
 
       {/* 現在のゲーム状態を表示 */}
@@ -37,7 +44,7 @@ function MidStoryPage() {
       )}
 
       
-      <TextBox scripts={professors[0].endings.bad} nextRoute={"/typing"} />
+      <TextBox scripts={professors[pid].storyTexts[game.typingRound]} nextRoute={"/typing"} />
 
       {/* 難易度情報 */}
 

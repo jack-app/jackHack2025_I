@@ -18,6 +18,7 @@ function DifficultySelectPage() {
   const handleDifficultySelect = (difficulty) => {
     game.setDifficulty(difficulty); // ゲームの難易度を設定
     console.log(`選択された難易度: ${difficulty}`);
+    navigate("/puzzle");
   };
 
   // 教授データから名前のみを取得
@@ -45,8 +46,6 @@ function DifficultySelectPage() {
       {/* 教授の名前一覧: */}
       {/* <div>{professorNames}</div> */}
 
-      {/* 次へ進むボタン（パズル画面へ） */}
-      <button onClick={() => navigate("/puzzle")}>パズルへ</button>
     </div>
   );
 }

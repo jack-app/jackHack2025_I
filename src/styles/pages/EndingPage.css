@@ -1,3 +1,35 @@
-.ending-page h1{
+.ending-page {
+  position: fixed;
+  top: 0;
+  left: 0;  
+  width: 100vw;
+  height: 100vh;
+
+  background-image: var(--ending-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* cotain or cover or 100% 100% */
+  
+
+  /* flex レイアウト */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0; /* 余白 */
+  margin: 0;
+  overflow: hidden;
+}
+
+.ending-page h1 {
   color: #0088ff;
+  margin-top: 20px; 
+}
+
+
+@media (max-width: 768px) {
+  .ending-page {
+    padding: 10px;
+    /* background-size: contain; */
+  }
 }
