@@ -9,6 +9,7 @@ import backgroundimage from "../assets/background/mid-story.svg";
 import TextBox from "../components/common/TextBox/TextBox";
 import TopLeftButtons from "../components/common/TopLeftButtons";
 import Lovepointbar from "../components/common/Lovepointbar.jsx";
+import Professor from "../components/common/ProfessorImage/Professor";
 
 
 
@@ -31,25 +32,19 @@ function MidStoryPage() {
       >
           <TopLeftButtons />
          < Lovepointbar />
-      <h1>MidStoryPage Page</h1>
 
-      {/* 現在のゲーム状態を表示 */}
-      <pre>{JSON.stringify(game, null, 2)}</pre>
-      {/* 選ばれた教授情報 */}
-      {professor && (
-        <div className="professor-info">
-          <h2>{professor.name}とのストーリー</h2>
-          <p>{professor.explanation}</p>
-        </div>
-      )}
-
-      
-      <TextBox scripts={professors[pid].storyTexts[game.typingRound]} nextRoute={"/typing"} />
+   
+         <div className="professorFigure">
+ <Professor professorId={pid}/>
+ </div>
+ <div className="professorText">
+ <TextBox scripts={professors[pid].storyTexts[game.typingRound]} nextRoute={"/typing"} />
+ </div>
 
       {/* 難易度情報 */}
 
       {/* 次へ進むボタン（タイピングゲームへ） */}
-      <button onClick={() => navigate("/typing")}>タイピングへ</button>
+      {/* <button onClick={() => navigate("/typing")}>タイピングへ</button> */}
     </div>
   );
 }
